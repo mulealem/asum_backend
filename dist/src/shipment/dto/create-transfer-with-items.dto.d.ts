@@ -1,0 +1,45 @@
+import { z } from 'zod';
+export declare const CreateTransferWithItemsSchema: z.ZodObject<{
+    carrierId: z.ZodString;
+    fromLocationId: z.ZodString;
+    toLocationId: z.ZodString;
+    shipmentNumber: z.ZodDefault<z.ZodString>;
+    shipmentScheduledDate: z.ZodDate;
+    expectedArrivalDate: z.ZodDate;
+    note: z.ZodOptional<z.ZodString>;
+    items: z.ZodArray<z.ZodObject<{
+        stockId: z.ZodString;
+        quantity: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        stockId?: string;
+        quantity?: number;
+    }, {
+        stockId?: string;
+        quantity?: number;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    items?: {
+        stockId?: string;
+        quantity?: number;
+    }[];
+    carrierId?: string;
+    fromLocationId?: string;
+    toLocationId?: string;
+    shipmentNumber?: string;
+    shipmentScheduledDate?: Date;
+    expectedArrivalDate?: Date;
+    note?: string;
+}, {
+    items?: {
+        stockId?: string;
+        quantity?: number;
+    }[];
+    carrierId?: string;
+    fromLocationId?: string;
+    toLocationId?: string;
+    shipmentNumber?: string;
+    shipmentScheduledDate?: Date;
+    expectedArrivalDate?: Date;
+    note?: string;
+}>;
+export type CreateTransferWithItemsDto = z.infer<typeof CreateTransferWithItemsSchema>;

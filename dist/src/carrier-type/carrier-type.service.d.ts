@@ -1,0 +1,111 @@
+import { CreateCarrierTypeDto } from './dto/create-carrier-type.dto';
+import { UpdateCarrierTypeDto } from './dto/update-carrier-type.dto';
+import { PrismaService } from '../prisma.service';
+export declare class CarrierTypeService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    create(data: CreateCarrierTypeDto): import(".prisma/client").Prisma.Prisma__CarrierTypeClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }[]>;
+    filter(query: any): import(".prisma/client").Prisma.PrismaPromise<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }[]>;
+    findOne(id: string): import(".prisma/client").Prisma.Prisma__CarrierTypeClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, null, import("@prisma/client/runtime/library").DefaultArgs>;
+    update(id: string, updateCarrierTypeDto: UpdateCarrierTypeDto): import(".prisma/client").Prisma.Prisma__CarrierTypeClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    enable(id: string): import(".prisma/client").Prisma.Prisma__CarrierTypeClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    disable(id: string, disabledById: string): import(".prisma/client").Prisma.Prisma__CarrierTypeClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    remove(id: string): import(".prisma/client").Prisma.Prisma__CarrierTypeClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+}

@@ -1,0 +1,111 @@
+import { PaymentOptionService } from './payment-option.service';
+import { CreatePaymentOptionDto } from './dto/create-payment-option.dto';
+import { UpdatePaymentOptionDto } from './dto/update-payment-option.dto';
+export declare class PaymentOptionController {
+    private readonly paymentOptionService;
+    constructor(paymentOptionService: PaymentOptionService);
+    create(createPaymentOptionDto: CreatePaymentOptionDto, req: any): import(".prisma/client").Prisma.Prisma__PaymentOptionClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }[]>;
+    search(query: any): import(".prisma/client").Prisma.PrismaPromise<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }[]>;
+    findOne(id: string): import(".prisma/client").Prisma.Prisma__PaymentOptionClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, null, import("@prisma/client/runtime/library").DefaultArgs>;
+    update(id: string, updatePaymentOptionDto: UpdatePaymentOptionDto): import(".prisma/client").Prisma.Prisma__PaymentOptionClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    remove(id: string): import(".prisma/client").Prisma.Prisma__PaymentOptionClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    enable(id: string): import(".prisma/client").Prisma.Prisma__PaymentOptionClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__PaymentOptionClient<{
+        title: string;
+        abbreviation: string | null;
+        description: string | null;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+}

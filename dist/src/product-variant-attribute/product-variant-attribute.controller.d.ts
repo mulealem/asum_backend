@@ -1,0 +1,111 @@
+import { ProductVariantAttributeService } from './product-variant-attribute.service';
+import { CreateProductVariantAttributeDto } from './dto/create-product-variant-attribute.dto';
+import { UpdateProductVariantAttributeDto } from './dto/update-product-variant-attribute.dto';
+export declare class ProductVariantAttributeController {
+    private readonly productVariantAttributeService;
+    constructor(productVariantAttributeService: ProductVariantAttributeService);
+    create(createProductVariantAttributeDto: CreateProductVariantAttributeDto): import(".prisma/client").Prisma.Prisma__ProductVariantAttributeClient<{
+        value: string;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        productVariantId: string;
+        key: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<{
+        value: string;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        productVariantId: string;
+        key: string;
+    }[]>;
+    search(query: any): import(".prisma/client").Prisma.PrismaPromise<{
+        value: string;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        productVariantId: string;
+        key: string;
+    }[]>;
+    findOne(id: string): import(".prisma/client").Prisma.Prisma__ProductVariantAttributeClient<{
+        value: string;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        productVariantId: string;
+        key: string;
+    }, null, import("@prisma/client/runtime/library").DefaultArgs>;
+    update(id: string, updateProductVariantAttributeDto: UpdateProductVariantAttributeDto): import(".prisma/client").Prisma.Prisma__ProductVariantAttributeClient<{
+        value: string;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        productVariantId: string;
+        key: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    remove(id: string): import(".prisma/client").Prisma.Prisma__ProductVariantAttributeClient<{
+        value: string;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        productVariantId: string;
+        key: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    enable(id: string): import(".prisma/client").Prisma.Prisma__ProductVariantAttributeClient<{
+        value: string;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        productVariantId: string;
+        key: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__ProductVariantAttributeClient<{
+        value: string;
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        productVariantId: string;
+        key: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+}

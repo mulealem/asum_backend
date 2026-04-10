@@ -1,0 +1,1 @@
+{"version":3,"file":"create-user-role.dto.js","sourceRoot":"","sources":["../../../../src/user-role/dto/create-user-role.dto.ts"],"names":[],"mappings":";;;AAAA,6BAAwB;AAExB,MAAa,iBAAiB;CAI7B;AAJD,8CAIC;AAEY,QAAA,oBAAoB,GAAG,OAAC,CAAC,MAAM,CAAC;IAC3C,MAAM,EAAE,OAAC,CAAC,MAAM,EAAE,CAAC,IAAI,EAAE;IACzB,MAAM,EAAE,OAAC,CAAC,MAAM,EAAE,CAAC,IAAI,EAAE;CAC1B,CAAC,CAAC"}

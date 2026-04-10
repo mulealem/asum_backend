@@ -1,0 +1,1916 @@
+generator client {
+  provider        = "prisma-client-js"
+  log             = ["query", "info", "warn", "error"]
+}
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  PENDING_APPROVAL
+  DENIED
+  PENDING_FULFILLMENT
+  PARTIALLY_FULFILLED
+  PENDING_SHIPMENT
+  PARTIALLY_SHIPPED
+  SHIPPED
+  DELIVERED
+  COMPLETED
+  CANCELLED
+}
+
+enum PurchaseRequestStatus {
+  DRAFT
+  PENDING_APPROVAL
+  APPROVED
+  ORDERED
+  PARTIALLY_RECEIVED
+  RECEIVED
+  REJECTED
+  CANCELLED
+}
+
+enum ShipmentType {
+  ORDER
+  TRANSFER
+}
+
+model User {
+  id                                 String                     @id @default(uuid())
+  createdAt                          DateTime                   @default(now())
+  name                               String
+  phoneNumber                        String?
+  email                              String
+  password                           String
+  isEnabled                          Boolean                    @default(true)
+  enableRemark                       String?
+  enabledBy                          User?                      @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById                        String?
+  disableRemark                      String?
+  disabledBy                         User?                      @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById                       String?
+  disabledDate                       DateTime?
+  userRoles                          UserRole[]
+  RoleEnabledBy                      Role[]                     @relation("EnabledBy")
+  RoleDisabledBy                     Role[]                     @relation("DisabledBy")
+  UserRoleDisabledBy                 UserRole[]                 @relation("DisabledBy")
+  UserRoleEnabledBy                  UserRole[]                 @relation("EnabledBy")
+  UserEnabledBy                      User[]                     @relation("EnabledBy")
+  UserDisabledBy                     User[]                     @relation("DisabledBy")
+  PaymentOptionEnabledBy             PaymentOption[]            @relation("EnabledBy")
+  PaymentOptionDisabledBy            PaymentOption[]            @relation("DisabledBy")
+  BankEnabledBy                      Bank[]                     @relation("EnabledBy")
+  BankDisabledBy                     Bank[]                     @relation("DisabledBy")
+  BrandEnabledBy                     Brand[]                    @relation("EnabledBy")
+  BrandDisabledBy                    Brand[]                    @relation("DisabledBy")
+  LocationEnabledBy                  Location[]                 @relation("EnabledBy")
+  LocationDisabledBy                 Location[]                 @relation("DisabledBy")
+  TypeOfProductEnabledBy             TypeOfProduct[]            @relation("EnabledBy")
+  TypeOfProductDisabledBy            TypeOfProduct[]            @relation("DisabledBy")
+  CustomerEnabledBy                  Customer[]                 @relation("EnabledBy")
+  CustomerDisabledBy                 Customer[]                 @relation("DisabledBy")
+  ProductEnabledBy                   Product[]                  @relation("EnabledBy")
+  ProductDisabledBy                  Product[]                  @relation("DisabledBy")
+  ProductVariantEnabledBy            ProductVariant[]           @relation("EnabledBy")
+  ProductVariantDisabledBy           ProductVariant[]           @relation("DisabledBy")
+  SupplierEnabledBy                  Supplier[]                 @relation("EnabledBy")
+  SupplierDisabledBy                 Supplier[]                 @relation("DisabledBy")
+  StockSourceEnabledBy               StockSource[]              @relation("EnabledBy")
+  StockSourceDisabledBy              StockSource[]              @relation("DisabledBy")
+  ProductVariantAttributeEnabledBy   ProductVariantAttribute[]  @relation("EnabledBy")
+  ProductVariantAttributeDisabledBy  ProductVariantAttribute[]  @relation("DisabledBy")
+  ProductVariantPriceEnabledBy       ProductVariantPrice[]      @relation("EnabledBy")
+  ProductVariantPriceDisabledBy      ProductVariantPrice[]      @relation("DisabledBy")
+  StockEnabledBy                     Stock[]                    @relation("EnabledBy")
+  StockDisabledBy                    Stock[]                    @relation("DisabledBy")
+  OrderEnabledBy                     Order[]                    @relation("EnabledBy")
+  OrderDisabledBy                    Order[]                    @relation("DisabledBy")
+  OrderItemEnabledBy                 OrderItem[]                @relation("EnabledBy")
+  OrderItemDisabledBy                OrderItem[]                @relation("DisabledBy")
+  OrderItemApprovedBy                OrderItem[]                @relation("ApprovedBy")
+  OrderPaymentEnabledBy              OrderPayment[]             @relation("EnabledBy")
+  OrderPaymentDisabledBy             OrderPayment[]             @relation("DisabledBy")
+  // OrderItemTransactionTransferredBy    OrderItemTransaction[]       @relation("TransferredBy")
+  // OrderItemTransactionReceivedBy       OrderItemTransaction[]       @relation("ReceivedBy")
+  PaymentEnabledBy                   Payment[]                  @relation("EnabledBy")
+  PaymentDisabledBy                  Payment[]                  @relation("DisabledBy")
+  // OrderItemTransactionDetailEnabledBy  OrderItemTransactionDetail[] @relation("EnabledBy")
+  // OrderItemTransactionDetailDisabledBy OrderItemTransactionDetail[] @relation("DisabledBy")
+  // OrderItemTransactionEnabledBy        OrderItemTransaction[]       @relation("EnabledBy")
+  // OrderItemTransactionDisabledBy       OrderItemTransaction[]       @relation("DisabledBy")
+  OrderItemFulfillmentEnabledBy      OrderItemFulfillment[]     @relation("EnabledBy")
+  OrderItemFulfillmentDisabledBy     OrderItemFulfillment[]     @relation("DisabledBy")
+  ShipmentStatusOptionEnabledBy      ShipmentStatusOption[]     @relation("EnabledBy")
+  ShipmentStatusOptionDisabledBy     ShipmentStatusOption[]     @relation("DisabledBy")
+  ShipmentItemStatusOptionEnabledBy  ShipmentItemStatusOption[] @relation("EnabledBy")
+  ShipmentItemStatusOptionDisabledBy ShipmentItemStatusOption[] @relation("DisabledBy")
+  CarrierTypeEnabledBy               CarrierType[]              @relation("EnabledBy")
+  CarrierTypeDisabledBy              CarrierType[]              @relation("DisabledBy")
+  CarrierEnabledBy                   Carrier[]                  @relation("EnabledBy")
+  CarrierDisabledBy                  Carrier[]                  @relation("DisabledBy")
+  ShipmentEnabledBy                  Shipment[]                 @relation("EnabledBy")
+  ShipmentDisabledBy                 Shipment[]                 @relation("DisabledBy")
+  ShipmentItemEnabledBy              ShipmentItem[]             @relation("EnabledBy")
+  ShipmentItemDisabledBy             ShipmentItem[]             @relation("DisabledBy")
+  ShipmentStatusEnabledBy            ShipmentStatus[]           @relation("EnabledBy")
+  ShipmentStatusDisabledBy           ShipmentStatus[]           @relation("DisabledBy")
+  ShipmentItemStatusEnabledBy        ShipmentItemStatus[]       @relation("EnabledBy")
+  ShipmentItemStatusDisabledBy       ShipmentItemStatus[]       @relation("DisabledBy")
+  ShipmentStartedBy                  Shipment[]                 @relation("StartedBy")
+  ShipmentArrivalConfirmedBy         Shipment[]                 @relation("ArrivalConfirmedBy")
+  ShipmentLoadedBy                   Shipment[]                 @relation("LoadedBy")
+  ShipmentCompletedBy                Shipment[]                 @relation("CompletedBy")
+  BankAccountEnabledBy               BankAccount[]              @relation("EnabledBy")
+  BankAccountDisabledBy              BankAccount[]              @relation("DisabledBy")
+  StockDiscardReasonEnabledBy        StockDiscardReason[]       @relation("EnabledBy")
+  StockDiscardReasonDisabledBy       StockDiscardReason[]       @relation("DisabledBy")
+  DiscardedStockEnabledBy            DiscardedStock[]           @relation("EnabledBy")
+  DiscardedStockDisabledBy           DiscardedStock[]           @relation("DisabledBy")
+  StockTransactionItemEnabledBy      StockTransactionItem[]     @relation("EnabledBy")
+  StockTransactionItemDisabledBy     StockTransactionItem[]     @relation("DisabledBy")
+  PurchaseRequestEnabledBy           PurchaseRequest[]          @relation("EnabledBy")
+  PurchaseRequestDisabledBy          PurchaseRequest[]          @relation("DisabledBy")
+  PurchaseRequestApprovedBy          PurchaseRequest[]          @relation("ApprovedBy")
+  PurchaseRequestItemEnabledBy       PurchaseRequestItem[]      @relation("EnabledBy")
+  PurchaseRequestItemDisabledBy      PurchaseRequestItem[]      @relation("DisabledBy")
+}
+
+model UserRole {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  user          User      @relation(fields: [userId], references: [id])
+  userId        String
+  role          Role      @relation(fields: [roleId], references: [id])
+  roleId        String
+  isEnabled     Boolean   @default(true)
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+}
+
+model Role {
+  id            String     @id @default(uuid())
+  createdAt     DateTime   @default(now())
+  title         String
+  permissions   String
+  isEnabled     Boolean    @default(true)
+  enableRemark  String?
+  enabledBy     User?      @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?      @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  UserRole      UserRole[]
+}
+
+model PaymentOption {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  title         String
+  abbreviation  String?
+  description   String?
+  isEnabled     Boolean   @default(true)
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  Order         Order[]
+  // OrderPayment OrderPayment[]
+  Payment       Payment[]
+}
+
+model Bank {
+  id            String        @id @default(uuid())
+  createdAt     DateTime      @default(now())
+  title         String
+  abbreviation  String?
+  description   String?
+  isEnabled     Boolean       @default(true)
+  enableRemark  String?
+  enabledBy     User?         @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?         @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  // Order         Order[]
+  // OrderPayment OrderPayment[]
+  // Payment       Payment[]
+  BankAccount   BankAccount[]
+}
+
+model BankAccount {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  bank          Bank      @relation(fields: [bankId], references: [id])
+  bankId        String
+  accountNumber String
+  accountName   String
+  isEnabled     Boolean   @default(true)
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  Order         Order[]
+  Payment       Payment[]
+}
+
+model Brand {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  title          String
+  abbreviation   String?
+  description    String?
+  isEnabled      Boolean          @default(true)
+  enableRemark   String?
+  enabledBy      User?            @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById    String?
+  disableRemark  String?
+  disabledBy     User?            @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById   String?
+  disabledDate   DateTime?
+  ProductVariant ProductVariant[]
+}
+
+model Location {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  title         String
+  abbreviation  String?
+  description   String?
+  isEnabled     Boolean   @default(true)
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  Stock         Stock[]
+  shipmentsFrom Shipment[] @relation("ShipmentFromLocation")
+  shipmentsTo   Shipment[] @relation("ShipmentToLocation")
+  // tranferredFromOrderItemTransaction OrderItemTransaction[] @relation("TransferredFrom")
+  // receivedFromOrderItemTransaction   OrderItemTransaction[] @relation("ReceivedFrom")
+}
+
+model TypeOfProduct {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  title         String
+  abbreviation  String?
+  description   String?
+  isEnabled     Boolean   @default(true)
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  Product       Product[]
+}
+
+model Customer {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  name          String
+  phoneNumber   String
+  tin           String?
+  address       String
+  isEnabled     Boolean   @default(true)
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  Order         Order[]
+  Payment       Payment[]
+}
+
+model Product {
+  id              String           @id @default(uuid())
+  createdAt       DateTime         @default(now())
+  typeOfProduct   TypeOfProduct    @relation(fields: [typeOfProductId], references: [id])
+  typeOfProductId String
+  title           String
+  abbreviation    String?
+  description     String?
+  isEnabled       Boolean          @default(true)
+  enableRemark    String?
+  enabledBy       User?            @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById     String?
+  disableRemark   String?
+  disabledBy      User?            @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById    String?
+  disabledDate    DateTime?
+  ProductVariant  ProductVariant[]
+}
+
+model ProductVariant {
+  id                      String                    @id @default(uuid())
+  createdAt               DateTime                  @default(now())
+  product                 Product                   @relation(fields: [productId], references: [id])
+  productId               String
+  code                    String
+  isEnabled               Boolean                   @default(true)
+  enableRemark            String?
+  enabledBy               User?                     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById             String?
+  disableRemark           String?
+  disabledBy              User?                     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById            String?
+  disabledDate            DateTime?
+  brand                   Brand                     @relation(fields: [brandId], references: [id])
+  brandId                 String
+  ProductVariantAttribute ProductVariantAttribute[]
+  ProductVariantPrice     ProductVariantPrice[]
+  Stock                   Stock[]
+  OrderItem               OrderItem[]
+  PurchaseRequestItem     PurchaseRequestItem[]
+}
+
+model Supplier {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  title         String
+  abbreviation  String?
+  description   String?
+  isEnabled     Boolean   @default(true)
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate       DateTime?
+  Stock              Stock[]
+  PurchaseRequest    PurchaseRequest[]
+}
+
+model StockSource {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  title         String
+  abbreviation  String?
+  description   String?
+  isEnabled     Boolean   @default(true)
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  Stock         Stock[]
+}
+
+model ProductVariantAttribute {
+  id               String         @id @default(uuid())
+  createdAt        DateTime       @default(now())
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id])
+  productVariantId String
+  key              String
+  value            String
+  isEnabled        Boolean        @default(true)
+  enableRemark     String?
+  enabledBy        User?          @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById      String?
+  disableRemark    String?
+  disabledBy       User?          @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById     String?
+  disabledDate     DateTime?
+}
+
+model ProductVariantPrice {
+  id               String         @id @default(uuid())
+  createdAt        DateTime       @default(now())
+  listPrice        Float
+  currency         String
+  tag              String?
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id])
+  productVariantId String
+  isEnabled        Boolean        @default(true)
+  enableRemark     String?
+  enabledBy        User?          @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById      String?
+  disableRemark    String?
+  disabledBy       User?          @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById     String?
+  disabledDate     DateTime?
+  OrderItem        OrderItem[]
+}
+
+model Stock {
+  id                   String                 @id @default(uuid())
+  createdAt            DateTime               @default(now())
+  productVariant       ProductVariant         @relation(fields: [productVariantId], references: [id])
+  productVariantId     String
+  supplier             Supplier               @relation(fields: [supplierId], references: [id])
+  supplierId           String
+  location             Location               @relation(fields: [locationId], references: [id])
+  locationId           String
+  batchId              String
+  totalPurchasedUnits  Int
+  remainingUnits       Int
+  manufacturedDate     DateTime?
+  expirationDate       DateTime?
+  referenceNumber      String?
+  receiptNumber        String?
+  stockSource          StockSource            @relation(fields: [stockSourceId], references: [id])
+  stockSourceId        String
+  isEnabled            Boolean                @default(true)
+  enableRemark         String?
+  enabledBy            User?                  @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById          String?
+  disableRemark        String?
+  disabledBy           User?                  @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById         String?
+  disabledDate         DateTime?
+  transportationFree   Float
+  taxFee               Float
+  miscellaneousFee     Float
+  purchasePrice        Float
+  expectedRetailPrice  Float
+  OrderItemFulfillment OrderItemFulfillment[]
+  DiscardedStock       DiscardedStock[]
+  StockTransactionItem StockTransactionItem[]
+  ShipmentItem         ShipmentItem[]
+}
+
+model StockDiscardReason {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  title          String
+  abbreviation   String?
+  description    String?
+  isEnabled      Boolean          @default(true)
+  enableRemark   String?
+  enabledBy      User?            @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById    String?
+  disableRemark  String?
+  disabledBy     User?            @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById   String?
+  disabledDate   DateTime?
+  DiscardedStock DiscardedStock[]
+}
+
+model DiscardedStock {
+  id                String             @id @default(uuid())
+  createdAt         DateTime           @default(now())
+  stock             Stock              @relation(fields: [stockId], references: [id])
+  stockId           String
+  discardedReason   StockDiscardReason @relation(fields: [discardedReasonId], references: [id])
+  discardedReasonId String
+  quantity          Int
+  isEnabled         Boolean            @default(true)
+  enableRemark      String?
+  enabledBy         User?              @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById       String?
+  disableRemark     String?
+  disabledBy        User?              @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById      String?
+  disabledDate      DateTime?
+}
+
+model StockTransactionItem {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  stock         Stock     @relation(fields: [stockId], references: [id])
+  stockId       String
+  quantity      Int
+  isEnabled     Boolean   @default(true)
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+}
+
+model Order {
+  id                    String         @id @default(uuid())
+  createdAt             DateTime       @default(now())
+  customer              Customer       @relation(fields: [customerId], references: [id])
+  customerId            String
+  paymentOption         PaymentOption  @relation(fields: [paymentOptionId], references: [id])
+  paymentOptionId       String
+  paymentOptionRefernce String?
+  // bank                  Bank           @relation(fields: [bankId], references: [id])
+  // bankId                String?
+  expectedBankAccount   BankAccount?   @relation(fields: [expectedBankAccountId], references: [id])
+  expectedBankAccountId String?
+  remark                String?
+  isFullyPaid           Boolean        @default(false)
+  isPartiallyPaid       Boolean        @default(false)
+  isFullyApproved       Boolean        @default(false)
+  isPartiallyApproved   Boolean?       @default(false)
+  isEnabled             Boolean        @default(true)
+  enableRemark          String?
+  enabledBy             User?          @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById           String?
+  disableRemark         String?
+  disabledBy            User?          @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById          String?
+  disabledDate          DateTime?
+  status                OrderStatus    @default(PENDING_APPROVAL)
+  lastApprovedDate      DateTime?
+  isPartiallyFulfilled  Boolean        @default(false)
+  isFullyFulfilled      Boolean        @default(false)
+  lastFulfilledDate     DateTime?
+  isPartiallyShipped    Boolean        @default(false)
+  isFullyShipped        Boolean        @default(false)
+  orderNumber           Int            @default(0)
+  OrderItem             OrderItem[]
+  OrderPayment          OrderPayment[]
+  // BankAccount           Bank?          @relation(fields: [bankId], references: [id])
+  // bankId                String?
+}
+
+model OrderItem {
+  id                    String                 @id @default(uuid())
+  createdAt             DateTime               @default(now())
+  orderQuantity         Int                    @default(0)
+  purchasedQuantity     Int                    @default(0)
+  isApproved            Boolean                @default(false)
+  approvedBy            User?                  @relation("ApprovedBy", fields: [approvedById], references: [id])
+  approvedById          String?
+  approvedAt            DateTime?
+  productVariant        ProductVariant         @relation(fields: [productVariantId], references: [id])
+  productVariantId      String
+  isEnabled             Boolean                @default(true)
+  enableRemark          String?
+  enabledBy             User?                  @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById           String?
+  disableRemark         String?
+  disabledBy            User?                  @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById          String?
+  disabledDate          DateTime?
+  productVariantPrice   ProductVariantPrice    @relation(fields: [productVariantPriceId], references: [id])
+  productVariantPriceId String
+  order                 Order                  @relation(fields: [orderId], references: [id])
+  orderId               String
+  price                 Float
+  currency              String
+  isPartiallyFulfilled  Boolean                @default(false)
+  fulfilledQuantity     Int                    @default(0)
+  isFullyFulfilled      Boolean                @default(false)
+  isPartiallyShipped    Boolean                @default(false)
+  shippedQuantity       Int                    @default(0)
+  isFullyShipped        Boolean                @default(false)
+  OrderItemFulfillment  OrderItemFulfillment[]
+  // OrderItemTransactionDetail OrderItemTransactionDetail[]
+}
+
+model OrderPayment {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  order         Order     @relation(fields: [orderId], references: [id])
+  orderId       String
+  paidAmount    Float
+  isEnabled     Boolean   @default(true)
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  payment       Payment   @relation(fields: [paymentId], references: [id])
+  paymentId     String
+}
+
+model Payment {
+  id               String         @id @default(uuid())
+  createdAt        DateTime       @default(now())
+  amount           Float
+  unassignedAmount Float?
+  isEnabled        Boolean        @default(true)
+  enableRemark     String?
+  enabledBy        User?          @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById      String?
+  disableRemark    String?
+  disabledBy       User?          @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById     String?
+  disabledDate     DateTime?
+  paymentOption    PaymentOption  @relation(fields: [paymentOptionId], references: [id])
+  paymentOptionId  String
+  // bank                  Bank?          @relation(fields: [bankId], references: [id])
+  // bankId                String?
+  bankAccount      BankAccount?   @relation(fields: [bankAccountId], references: [id])
+  bankAccountId    String?
+  referenceNumber  String?
+  receiptNumber    String?
+  customer         Customer       @relation(fields: [customerId], references: [id])
+  customerId       String
+  // OrderPayment          OrderPayment[]
+  OrderPayment     OrderPayment[]
+}
+
+model OrderItemFulfillment {
+  id                String         @id @default(uuid())
+  createdAt         DateTime       @default(now())
+  orderItem         OrderItem      @relation(fields: [orderItemId], references: [id])
+  orderItemId       String
+  stock             Stock          @relation(fields: [stockId], references: [id])
+  stockId           String
+  fulfilledQuantity Int
+  shippedQuantity   Int            @default(0)
+  isEnabled         Boolean        @default(true)
+  enableRemark      String?
+  enabledBy         User?          @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById       String?
+  disableRemark     String?
+  disabledBy        User?          @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById      String?
+  disabledDate      DateTime?
+  ShipmentItem      ShipmentItem[]
+}
+
+model ShipmentStatusOption {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  title          String
+  abbreviation   String?
+  description    String?
+  isEnabled      Boolean          @default(true)
+  enableRemark   String?
+  enabledBy      User?            @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById    String?
+  disableRemark  String?
+  disabledBy     User?            @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById   String?
+  disabledDate   DateTime?
+  ShipmentStatus ShipmentStatus[]
+}
+
+model ShipmentItemStatusOption {
+  id                 String               @id @default(uuid())
+  createdAt          DateTime             @default(now())
+  title              String
+  abbreviation       String?
+  description        String?
+  isEnabled          Boolean              @default(true)
+  enableRemark       String?
+  enabledBy          User?                @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById        String?
+  disableRemark      String?
+  disabledBy         User?                @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById       String?
+  disabledDate       DateTime?
+  ShipmentItemStatus ShipmentItemStatus[]
+}
+
+model CarrierType {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  title         String
+  abbreviation  String?
+  description   String?
+  isEnabled     Boolean   @default(true)
+  enableRemark  String?
+  enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  Carrier       Carrier[]
+}
+
+model Carrier {
+  id            String      @id @default(uuid())
+  createdAt     DateTime    @default(now())
+  title         String
+  identifier    String?
+  description   String?
+  carrierType   CarrierType @relation(fields: [carrierTypeId], references: [id])
+  carrierTypeId String
+  isEnabled     Boolean     @default(true)
+  enableRemark  String?
+  enabledBy     User?       @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?       @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+  Shipment      Shipment[]
+}
+
+model Shipment {
+  id                    String           @id @default(uuid())
+  createdAt             DateTime         @default(now())
+  type                  ShipmentType     @default(ORDER)
+  carrier               Carrier          @relation(fields: [carrierId], references: [id])
+  carrierId             String
+  fromLocation          Location?        @relation("ShipmentFromLocation", fields: [fromLocationId], references: [id])
+  fromLocationId        String?
+  toLocation            Location?        @relation("ShipmentToLocation", fields: [toLocationId], references: [id])
+  toLocationId          String?
+  isEnabled             Boolean          @default(true)
+  enableRemark          String?
+  enabledBy             User?            @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById           String?
+  disableRemark         String?
+  disabledBy            User?            @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById          String?
+  disabledDate          DateTime?
+  shipmentNumber        String
+  note                  String?
+  shipmentScheduledDate DateTime
+  isShipmentStarted     Boolean          @default(false)
+  shipmentStartDate     DateTime?
+  shipmentStartedBy     User?            @relation("StartedBy", fields: [shipmentStartedById], references: [id])
+  shipmentStartedById   String?
+  isShipmentLoaded      Boolean          @default(false)
+  shipmentLoadedDate    DateTime?
+  shipmentLoadedBy      User?            @relation("LoadedBy", fields: [shipmentLoadedById], references: [id])
+  shipmentLoadedById    String?
+  isShipmentArrived     Boolean          @default(false)
+  expectedArrivalDate   DateTime?
+  actualArrivalDate     DateTime?
+  arrivalConfirmedBy    User?            @relation("ArrivalConfirmedBy", fields: [arrivalConfirmedById], references: [id])
+  arrivalConfirmedById  String?
+  isShipmentCompleted   Boolean          @default(false)
+  shipmentCompletedDate DateTime?
+  shipmentCompletedBy   User?            @relation("CompletedBy", fields: [shipmentCompletedById], references: [id])
+  shipmentCompletedById String?
+  shipmentItems         ShipmentItem[]
+  ShipmentStatus        ShipmentStatus[]
+}
+
+model ShipmentItem {
+  id                     String                @id @default(uuid())
+  createdAt              DateTime              @default(now())
+  shipment               Shipment              @relation(fields: [shipmentId], references: [id])
+  shipmentId             String
+  orderItemFulfillment   OrderItemFulfillment? @relation(fields: [orderItemFulfillmentId], references: [id])
+  orderItemFulfillmentId String?
+  stock                  Stock?                @relation(fields: [stockId], references: [id])
+  stockId                String?
+  quantity               Int
+  isEnabled              Boolean               @default(true)
+  enableRemark           String?
+  enabledBy              User?                 @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById            String?
+  disableRemark          String?
+  disabledBy             User?                 @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById           String?
+  disabledDate           DateTime?
+  ShipmentItemStatus     ShipmentItemStatus[]
+}
+
+model ShipmentStatus {
+  id            String               @id @default(uuid())
+  createdAt     DateTime             @default(now())
+  shipment      Shipment             @relation(fields: [shipmentId], references: [id])
+  shipmentId    String
+  status        ShipmentStatusOption @relation(fields: [statusId], references: [id])
+  statusId      String
+  isEnabled     Boolean              @default(true)
+  enableRemark  String?
+  enabledBy     User?                @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById   String?
+  disableRemark String?
+  disabledBy    User?                @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById  String?
+  disabledDate  DateTime?
+}
+
+model ShipmentItemStatus {
+  id             String                   @id @default(uuid())
+  createdAt      DateTime                 @default(now())
+  shipmentItem   ShipmentItem             @relation(fields: [shipmentItemId], references: [id])
+  shipmentItemId String
+  status         ShipmentItemStatusOption @relation(fields: [statusId], references: [id])
+  statusId       String
+  isEnabled      Boolean                  @default(true)
+  enableRemark   String?
+  enabledBy      User?                    @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById    String?
+  disableRemark  String?
+  disabledBy     User?                    @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById   String?
+  disabledDate   DateTime?
+}
+
+// nest g resource user --no-spec
+// nest g resource user-role --no-spec
+// nest g resource role --no-spec
+// nest g resource payment-option --no-spec
+// nest g resource bank --no-spec
+// nest g resource brand --no-spec
+// nest g resource location --no-spec
+// nest g resource type-of-product --no-spec
+// nest g resource customer --no-spec
+// nest g resource product --no-spec
+// nest g resource product-variant --no-spec
+// nest g resource supplier --no-spec
+// nest g resource stock-source --no-spec
+// nest g resource product-variant-attribute --no-spec
+// nest g resource product-variant-price --no-spec
+// nest g resource stock --no-spec
+// nest g resource order --no-spec
+// nest g resource order-item --no-spec
+// nest g resource order-payment --no-spec
+// nest g resource payment --no-spec
+// nest g resource order-item-fulfillment --no-spec
+
+// nest g resource shipment-status-option --no-spec
+// nest g resource shipment-item-status-option --no-spec
+// nest g resource carrier-type --no-spec
+// nest g resource carrier --no-spec
+// nest g resource shipment --no-spec
+// nest g resource shipment-item --no-spec
+
+// nest g resource shipment-status --no-spec
+// nest g resource shipment-item-status --no-spec
+
+// nest g resource stock-discard-reason --no-spec
+// nest g resource discarded-stock --no-spec
+
+// model OrderItemTransaction {
+//   id               String    @id @default(uuid())
+//   createdAt        DateTime  @default(now())
+//   tranferredFrom   Location  @relation(fields: [tranferredFromId], references: [id])
+//   tranferredFromId String
+//   transferredBy    User      @relation("TransferredBy", fields: [transferredById], references: [id])
+//   transferredById  String
+//   receivedFrom     Location  @relation(fields: [receivedFromId], references: [id])
+//   receivedFromId   String
+//   receivedBy       User      @relation("ReceivedBy", fields: [receivedById], references: [id])
+//   receivedById     String
+//   transferredDate  DateTime  @default(now())
+//   receivedDate     DateTime  @default(now())
+//   vehicleDetail    String
+//   isEnabled                         Boolean                   @default(true)
+//   enabledBy        User      @relation("EnabledBy", fields: [enabledById], references: [id])
+//   enabledById      String
+//   disabledBy       User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+//   disabledById     String?
+//   disabledDate     DateTime
+// }
+
+// model OrderItemTransactionDetail {
+//   id           String    @id @default(uuid())
+//   createdAt    DateTime  @default(now())
+//   orderItem    OrderItem @relation(fields: [orderItemId], references: [id])
+//   orderItemId  String
+//   quantity     Int
+//   isEnabled                         Boolean                   @default(true)
+//   enabledBy    User?      @relation("EnabledBy", fields: [enabledById], references: [id])
+//   enabledById  String?
+//   disabledBy   User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+//   disabledById String?
+//   disabledDate DateTime  @default(now())
+// }
+
+//  Dtos
+// User, CreateUserDto, UpdateUserDto
+// {
+//   name: string;
+//   email: string;
+//   password: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateUserDto
+// {
+//   name: string;
+//   email: string;
+//   password: string;
+// }
+
+// UpdateUserDto
+// {
+//   name: string;
+//   email: string;
+//   password: string;
+// }
+
+// UserRole, CreateUserRoleDto, UpdateUserRoleDto
+// {
+//   userId: string;
+//   User: User;
+//   roleId: string;
+//   Role: Role;
+//   isEnabled: boolean;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+//   enabledById: string;
+//   enabledBy: User;
+// }
+
+// CreateUserRoleDto
+// {
+//   userId: string;
+//   roleId: string;
+// }
+
+// UpdateUserRoleDto
+// {
+//   userId: string;
+//   roleId: string;
+// }
+
+// Role, CreateRoleDto, UpdateRoleDto
+// {
+//   title: string;
+//   permissions: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateRoleDto
+// {
+//   title: string;
+//   permissions: string;
+// }
+
+// UpdateRoleDto
+// {
+//   title: string;
+//   permissions: string;
+// }
+
+// PaymentOption, CreatePaymentOptionDto, UpdatePaymentOptionDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreatePaymentOptionDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// UpdatePaymentOptionDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// Bank, CreateBankDto, UpdateBankDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateBankDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// UpdateBankDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// BankAccount, CreateBankAccountDto, UpdateBankAccountDto
+// {
+//   bankId: string;
+//   accountNumber: string;
+//   accountName: string;
+// }
+
+// // CreateBankAccountDto
+// {
+//   bankId: string;
+//   accountNumber: string;
+//   accountName: string;
+// }
+
+// // UpdateBankAccountDto
+// {
+//   bankId: string;
+//   accountNumber: string;
+//   accountName: string;
+// }
+
+// Brand, CreateBrandDto, UpdateBrandDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateBrandDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// UpdateBrandDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// Location, CreateLocationDto, UpdateLocationDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateLocationDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// UpdateLocationDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// TypeOfProduct, CreateTypeOfProductDto, UpdateTypeOfProductDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateTypeOfProductDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// UpdateTypeOfProductDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// Customer, CreateCustomerDto, UpdateCustomerDto
+// {
+//   name: string;
+//   phoneNumber: string;
+//   tin: string;
+//   address: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateCustomerDto
+// {
+//   name: string;
+//   phoneNumber: string;
+//   tin: string;
+//   address: string;
+// }
+
+// UpdateCustomerDto
+// {
+//   name: string;
+//   phoneNumber: string;
+//   tin: string;
+//   address: string;
+// }
+
+// Product, CreateProductDto, UpdateProductDto
+// {
+//   typeOfProductId: string;
+//   TypeOfProduct: TypeOfProduct;
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateProductDto
+// {
+//   typeOfProductId: string;
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// UpdateProductDto
+// {
+//   typeOfProductId: string;
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// ProductVariant, CreateProductVariantDto, UpdateProductVariantDto
+// {
+//   productId: string;
+//   Product: Product;
+//   code: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+//   brandId: string;
+//   Brand: Brand;
+// }
+
+// CreateProductVariantDto
+// {
+//   productId: string;
+//   code: string;
+//   brandId: string;
+// }
+
+// UpdateProductVariantDto
+// {
+//   productId: string;
+//   code: string;
+//   brandId: string;
+// }
+
+// Supplier, CreateSupplierDto, UpdateSupplierDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateSupplierDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// UpdateSupplierDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// StockSource, CreateStockSourceDto, UpdateStockSourceDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateStockSourceDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// UpdateStockSourceDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// ProductVariantAttribute, CreateProductVariantAttributeDto, UpdateProductVariantAttributeDto
+// {
+//   productVariantId: string;
+//   ProductVariant: ProductVariant;
+//   key: string;
+//   value: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateProductVariantAttributeDto
+// {
+//   productVariantId: string;
+//   key: string;
+//   value: string;
+// }
+
+// UpdateProductVariantAttributeDto
+// {
+//   productVariantId: string;
+//   key: string;
+//   value: string;
+// }
+
+// ProductVariantPrice, CreateProductVariantPriceDto, UpdateProductVariantPriceDto
+// {
+//   listPrice: number;
+//   currency: string;
+//   tag: string;
+//   productVariantId: string;
+//   ProductVariant: ProductVariant;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// CreateProductVariantPriceDto
+// {
+//   listPrice: number;
+//   currency: string;
+//   tag: string;
+//   productVariantId: string;
+// }
+
+// UpdateProductVariantPriceDto
+// {
+//   listPrice: number;
+//   currency: string;
+//   tag: string;
+//   productVariantId: string;
+// }
+
+// Stock, CreateStockDto, UpdateStockDto
+// {
+//   productVariantId: string;
+//   ProductVariant: ProductVariant;
+//   supplierId: string;
+//   Supplier: Supplier;
+//   locationId: string;
+//   Location: Location;
+//   batchId: string;
+//   totalPurchasedUnits: number;
+//   remainingUnits: number;
+//   manufacturedDate: Date;
+//   expirationDate: Date;
+//   referenceNumber: string;
+//   receiptNumber: string;
+//   stockSourceId: string;
+//   StockSource: StockSource;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+//   transportationFree: number;
+//   taxFee: number;
+//   miscellaneousFee: number;
+//   purchasePrice: number;
+//   expectedRetailPrice: number;
+// }
+
+// CreateStockDto
+// {
+//   productVariantId: string;
+//   supplierId: string;
+//   locationId: string;
+//   batchId: string;
+//   totalPurchasedUnits: number;
+//   remainingUnits: number;
+//   manufacturedDate: Date;
+//   expirationDate: Date;
+//   referenceNumber: string;
+//   receiptNumber: string;
+//   stockSourceId: string;
+//   transportationFree: number;
+//   taxFee: number;
+//   miscellaneousFee: number;
+//   purchasePrice: number;
+//   expectedRetailPrice: number;
+// }
+
+// UpdateStockDto
+// {
+//   productVariantId: string;
+//   supplierId: string;
+//   locationId: string;
+//   batchId: string;
+//   totalPurchasedUnits: number;
+//   remainingUnits: number;
+//   manufacturedDate: Date;
+//   expirationDate: Date;
+//   referenceNumber: string;
+//   receiptNumber: string;
+//   stockSourceId: string;
+//   transportationFree: number;
+//   taxFee: number;
+//   miscellaneousFee: number;
+//   purchasePrice: number;
+//   expectedRetailPrice: number;
+// }
+
+// Order, CreateOrderDto, UpdateOrderDto
+// {
+//   customerId: string;
+//   Customer: Customer;
+//   paymentOptionId: string;
+//   PaymentOption: PaymentOption;
+//   paymentOptionRefernce: string;
+//   bankId: string;
+//   Bank: Bank;
+//   remark: string;
+//   isFullyPaid: boolean;
+//   isPartiallyPaid: boolean;
+//   isFullyApproved: boolean;
+//   isPartiallyApproved: boolean;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+//   status: string;
+//   lastApprovedDate: Date;
+//   isPartiallyFulfilled: boolean;
+//   isFullyFulfilled: boolean;
+//   lastFulfilledDate: Date;
+//   isPartiallyShipped: boolean;
+//   isFullyShipped: boolean;
+//   orderNumber: number;
+// }
+
+// CreateOrderDto
+// {
+//   customerId: string;
+//   paymentOptionId: string;
+//   bankId: string;
+//   remark: string;
+//   isFullyPaid: boolean;
+//   isPartiallyPaid: boolean;
+//   isFullyApproved: boolean;
+//   isPartiallyApproved: boolean;
+//   status: string;
+//   lastApprovedDate: Date;
+//   isPartiallyFulfilled: boolean;
+//   isFullyFulfilled: boolean;
+//   lastFulfilledDate: Date;
+//   isPartiallyShipped: boolean;
+//   isFullyShipped: boolean;
+//   orderNumber: number;
+// }
+
+// UpdateOrderDto
+// {
+//   customerId: string;
+//   paymentOptionId: string;
+//   bankId: string;
+//   remark: string;
+//   isFullyPaid: boolean;
+//   isPartiallyPaid: boolean;
+//   isFullyApproved: boolean;
+//   isPartiallyApproved: boolean;
+//   status: string;
+//   lastApprovedDate: Date;
+//   isPartiallyFulfilled: boolean;
+//   isFullyFulfilled: boolean;
+//   lastFulfilledDate: Date;
+//   isPartiallyShipped: boolean;
+//   isFullyShipped: boolean;
+//   orderNumber: number;
+// }
+
+// OrderItem, CreateOrderItemDto, UpdateOrderItemDto
+// {
+//   purchasedQuantity: number;
+//   isApproved: boolean;
+//   approvedById: string;
+//   approvedBy: User;
+//   approvedAt: Date;
+//   productVariantId: string;
+//   ProductVariant: ProductVariant;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+//   productVariantPriceId: string;
+//   ProductVariantPrice: ProductVariantPrice;
+//   orderId: string;
+//   Order: Order;
+//   price: number;
+//   currency: string;
+//   isPartiallyFulfilled: boolean;
+//   fulfilledQuantity: number;
+//   isFullyFulfilled: boolean;
+// }
+
+// CreateOrderItemDto
+// {
+//   purchasedQuantity: number;
+//   isApproved: boolean;
+//   approvedById: string;
+//   productVariantId: string;
+//   productVariantPriceId: string;
+//   orderId: string;
+//   price: number;
+//   currency: string;
+//   isPartiallyFulfilled: boolean;
+//   fulfilledQuantity: number;
+//   isFullyFulfilled: boolean;
+// }
+
+// UpdateOrderItemDto
+// {
+//   purchasedQuantity: number;
+//   isApproved: boolean;
+//   approvedById: string;
+//   productVariantId: string;
+//   productVariantPriceId: string;
+//   orderId: string;
+//   price: number;
+//   currency: string;
+//   isPartiallyFulfilled: boolean;
+//   fulfilledQuantity: number;
+//   isFullyFulfilled: boolean;
+// }
+
+// OrderPayment, CreateOrderPaymentDto, UpdateOrderPaymentDto
+// {
+//   paidAmount: number;
+//   orderId: string;
+//   Order: Order;
+//   bankId: string;
+//   Bank: Bank;
+//   paymentId: string;
+//   Payment: Payment;
+//   paymentOptionId: string;
+//   PaymentOption: PaymentOption;
+//   paymentOptionRefernce: string;
+// }
+
+// CreateOrderPaymentDto
+// {
+//   paidAmount: number;
+//   orderId: string;
+//   bankId: string;
+//   paymentId: string;
+//   paymentOptionId: string;
+//   paymentOptionRefernce: string;
+// }
+
+// UpdateOrderPaymentDto
+// {
+//   paidAmount: number;
+//   orderId: string;
+//   bankId: string;
+//   paymentId: string;
+//   paymentOptionId: string;
+//   paymentOptionRefernce: string;
+// }
+
+// Payment, CreatePaymentDto, UpdatePaymentDto
+// {
+//   amount: number;
+//   paymentOptionId: string;
+//   PaymentOption: PaymentOption;
+//   paymentOptionRefernce: string;
+//   customerId: string;
+//   Customer: Customer;
+// }
+
+// CreatePaymentDto
+// {
+//   amount: number;
+//   paymentOptionId: string;
+//   customerId: string;
+//   paymentOptionRefernce: string;
+// }
+
+// UpdatePaymentDto
+// {
+//   amount: number;
+//   paymentOptionId: string;
+//   customerId: string;
+//   paymentOptionRefernce: string;
+// }
+
+// OrderItemFulfillment, CreateOrderItemFulfillmentDto, UpdateOrderItemFulfillmentDto
+// {
+//   orderItemId: string;
+//   OrderItem: OrderItem;
+//   stockId: string;
+//   Stock: Stock;
+//   fulfilledQuantity: number;
+// }
+
+// CreateOrderItemFulfillmentDto
+// {
+//   orderItemId: string;
+//   stockId: string;
+//   fulfilledQuantity: number;
+// }
+
+// UpdateOrderItemFulfillmentDto
+// {
+//   orderItemId: string;
+//   stockId: string;
+//   fulfilledQuantity: number;
+// }
+
+// ShipmentStatusOption, CreateShipmentStatusOptionDto, UpdateShipmentStatusOptionDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// // CreateShipmentStatusOptionDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// // UpdateShipmentStatusOptionDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// // ShipmentItemStatusOption, CreateShipmentItemStatusOptionDto, UpdateShipmentItemStatusOptionDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// // CreateShipmentItemStatusOptionDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// // UpdateShipmentItemStatusOptionDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// // CarrierType, CreateCarrierTypeDto, UpdateCarrierTypeDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// // CreateCarrierTypeDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// // UpdateCarrierTypeDto
+// {
+//   title: string;
+//   abbreviation: string;
+//   description: string;
+// }
+
+// // Carrier, CreateCarrierDto, UpdateCarrierDto
+// {
+//   title: string;
+//   identifier: string;
+//   description: string;
+//   carrierTypeId: string;
+//   CarrierType: CarrierType;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// // CreateCarrierDto
+// {
+//   title: string;
+//   identifier: string;
+//   description: string;
+//   carrierTypeId: string;
+// }
+
+// // UpdateCarrierDto
+// {
+//   title: string;
+//   identifier: string;
+//   description: string;
+//   carrierTypeId: string;
+// }
+
+// // Shipment, CreateShipmentDto, UpdateShipmentDto
+// {
+//   carrierId: string;
+//   Carrier: Carrier;
+//   shipmentStatusId: string;
+//   ShipmentStatusOption: ShipmentStatusOption;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+//   shipmentNumber: number;
+//   shipmentDate: Date;
+//   expectedArrivalDate: Date;
+//   actualArrivalDate: Date;
+// }
+
+// // CreateShipmentDto
+// {
+//   carrierId: string;
+//   shipmentStatusId: string;
+//   shipmentNumber: number;
+//   shipmentDate: Date;
+//   expectedArrivalDate: Date;
+//   actualArrivalDate: Date;
+// }
+
+// // UpdateShipmentDto
+// {
+//   carrierId: string;
+//   shipmentStatusId: string;
+//   shipmentNumber: number;
+//   shipmentDate: Date;
+//   expectedArrivalDate: Date;
+//   actualArrivalDate: Date;
+// }
+
+// // ShipmentItem, CreateShipmentItemDto, UpdateShipmentItemDto
+// {
+//   shipmentId: string;
+//   Shipment: Shipment;
+//   orderItemFulfillmentId: string;
+//   OrderItemFulfillment: OrderItemFulfillment;
+//   shipmentItemStatusId: string;
+//   ShipmentItemStatusOption: ShipmentItemStatusOption;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// // CreateShipmentItemDto
+// {
+//   shipmentId: string;
+//   orderItemFulfillmentId: string;
+//   shipmentItemStatusId: string;
+// }
+
+// // UpdateShipmentItemDto
+// {
+//   shipmentId: string;
+//   orderItemFulfillmentId: string;
+//   shipmentItemStatusId: string;
+// }
+
+// // ShipmentStatus, CreateShipmentStatusDto, UpdateShipmentStatusDto
+// {
+//   shipmentId: string;
+//   Shipment: Shipment;
+//   statusId: string;
+//   ShipmentStatusOption: ShipmentStatusOption;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// // CreateShipmentStatusDto
+// {
+//   shipmentId: string;
+//   statusId: string;
+// }
+
+// // UpdateShipmentStatusDto
+// {
+//   shipmentId: string;
+//   statusId: string;
+// }
+
+// ShipmentItemStatus, CreateShipmentItemStatusDto, UpdateShipmentItemStatusDto
+// {
+//   shipmentItemId: string;
+//   ShipmentItem: ShipmentItem;
+//   statusId: string;
+//   ShipmentItemStatusOption: ShipmentItemStatusOption;
+//   isEnabled: boolean;
+//   enabledById: string;
+//   enabledBy: User;
+//   disabledById: string;
+//   disabledBy: User;
+//   disabledDate: Date;
+// }
+
+// // CreateShipmentItemStatusDto
+// {
+//   shipmentItemId: string;
+//   statusId: string;
+// }
+
+// // UpdateShipmentItemStatusDto
+// {
+//   shipmentItemId: string;
+//   statusId: string;
+// }
+
+// model StockTransactionItem {
+//   id            String    @id @default(uuid())
+//   createdAt     DateTime  @default(now())
+//   stock         Stock     @relation(fields: [stockId], references: [id])
+//   stockId       String
+//   quantity      Int
+//   isEnabled     Boolean   @default(true)
+//   enableRemark  String?
+//   enabledBy     User?     @relation("EnabledBy", fields: [enabledById], references: [id])
+//   enabledById   String
+//   disableRemark String?
+//   disabledBy    User?     @relation("DisabledBy", fields: [disabledById], references: [id])
+//   disabledById  String?
+//   disabledDate  DateTime?
+// }
+
+// StockTransactionItem, CreateStockTransactionItemDto, UpdateStockTransactionItemDto
+// {
+//   stockId: string;
+//   quantity: number;
+//   createdAt: Date;
+//   isEnabled: boolean;
+//   enableRemark: string;
+//   enabledById: string;
+//   disableRemark: string;
+//   disabledById: string;
+//   disabledDate: Date; 
+// }
+
+// CreateStockTransactionItemDto
+// {
+//   stockId: string;
+//   quantity: number;
+// }
+
+// UpdateStockTransactionItemDto
+// {
+//   stockId: string;
+//   quantity: number;
+// }
+
+model PurchaseRequest {
+  id                      String                @id @default(uuid())
+  createdAt               DateTime              @default(now())
+  purchaseRequestNumber   Int                   @default(0)
+  supplier                Supplier              @relation(fields: [supplierId], references: [id])
+  supplierId              String
+  status                  PurchaseRequestStatus @default(DRAFT)
+  remark                  String?
+  expectedDeliveryDate    DateTime?
+  approvedDate            DateTime?
+  approvedBy              User?                 @relation("ApprovedBy", fields: [approvedById], references: [id])
+  approvedById            String?
+  orderedDate             DateTime?
+  receivedDate            DateTime?
+  isEnabled               Boolean               @default(true)
+  enableRemark            String?
+  enabledBy               User?                 @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById             String?
+  disableRemark           String?
+  disabledBy              User?                 @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById            String?
+  disabledDate            DateTime?
+  PurchaseRequestItem     PurchaseRequestItem[]
+}
+
+model PurchaseRequestItem {
+  id                    String          @id @default(uuid())
+  createdAt             DateTime        @default(now())
+  purchaseRequest       PurchaseRequest @relation(fields: [purchaseRequestId], references: [id])
+  purchaseRequestId     String
+  productVariant        ProductVariant  @relation(fields: [productVariantId], references: [id])
+  productVariantId      String
+  requestedQuantity     Int
+  receivedQuantity      Int             @default(0)
+  expectedUnitPrice     Float?
+  currency              String?
+  remark                String?
+  isEnabled             Boolean         @default(true)
+  enableRemark          String?
+  enabledBy             User?           @relation("EnabledBy", fields: [enabledById], references: [id])
+  enabledById           String?
+  disableRemark         String?
+  disabledBy            User?           @relation("DisabledBy", fields: [disabledById], references: [id])
+  disabledById          String?
+  disabledDate          DateTime?
+}

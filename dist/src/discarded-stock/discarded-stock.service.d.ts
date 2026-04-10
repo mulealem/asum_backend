@@ -1,0 +1,111 @@
+import { CreateDiscardedStockDto } from './dto/create-discarded-stock.dto';
+import { UpdateDiscardedStockDto } from './dto/update-discarded-stock.dto';
+import { PrismaService } from '../prisma.service';
+export declare class DiscardedStockService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    create(data: CreateDiscardedStockDto): Promise<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        stockId: string;
+        quantity: number;
+        discardedReasonId: string;
+    }>;
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        stockId: string;
+        quantity: number;
+        discardedReasonId: string;
+    }[]>;
+    filter(query: any): import(".prisma/client").Prisma.PrismaPromise<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        stockId: string;
+        quantity: number;
+        discardedReasonId: string;
+    }[]>;
+    findOne(id: string): import(".prisma/client").Prisma.Prisma__DiscardedStockClient<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        stockId: string;
+        quantity: number;
+        discardedReasonId: string;
+    }, null, import("@prisma/client/runtime/library").DefaultArgs>;
+    update(id: string, updateDiscardedStockDto: UpdateDiscardedStockDto): import(".prisma/client").Prisma.Prisma__DiscardedStockClient<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        stockId: string;
+        quantity: number;
+        discardedReasonId: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    enable(id: string): import(".prisma/client").Prisma.Prisma__DiscardedStockClient<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        stockId: string;
+        quantity: number;
+        discardedReasonId: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    disable(id: string, disabledById: string): import(".prisma/client").Prisma.Prisma__DiscardedStockClient<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        stockId: string;
+        quantity: number;
+        discardedReasonId: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    remove(id: string): import(".prisma/client").Prisma.Prisma__DiscardedStockClient<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        stockId: string;
+        quantity: number;
+        discardedReasonId: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+}
