@@ -36,9 +36,9 @@ export declare const ProductVariantPriceParameterSchema: z.ZodObject<{
     enabledEndDate?: string;
     disabledStartDate?: string;
     disabledEndDate?: string;
-    productVariantIds?: string[];
     listPrice?: number;
     currency?: string;
+    productVariantIds?: string[];
     tags?: string[];
 }, {
     isEnabled?: boolean;
@@ -49,8 +49,8 @@ export declare const ProductVariantPriceParameterSchema: z.ZodObject<{
     enabledEndDate?: string;
     disabledStartDate?: string;
     disabledEndDate?: string;
-    productVariantIds?: string[];
     listPrice?: number;
     currency?: string;
+    productVariantIds?: string[];
     tags?: string[];
 }>;
