@@ -15,7 +15,7 @@ RUN npm ci
 COPY . .
 
 RUN npm run build && \
-    test -f dist/main.js || (echo "ERROR: dist/main.js not found after build" && exit 1)
+    test -f dist/src/main.js || (echo "ERROR: dist/src/main.js not found after build" && exit 1)
 
 # ── Stage 2: production image ─────────────────────────────────
 FROM node:22-alpine
@@ -34,4 +34,4 @@ ENV PORT=3001
 
 EXPOSE 3001
 
-CMD ["node", "dist/main"]
+CMD ["node", "dist/src/main"]
