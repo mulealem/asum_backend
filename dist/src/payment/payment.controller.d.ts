@@ -46,6 +46,8 @@ export declare class PaymentController {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     }[]>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
         paymentOption: {
@@ -76,6 +78,7 @@ export declare class PaymentController {
                 disabledDate: Date | null;
             };
         } & {
+            code: string | null;
             enabledById: string | null;
             id: string;
             createdAt: Date;
@@ -84,7 +87,9 @@ export declare class PaymentController {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            name: string | null;
             bankId: string;
+            branch: string | null;
             accountNumber: string;
             accountName: string;
         };
@@ -148,6 +153,7 @@ export declare class PaymentController {
                 disabledDate: Date | null;
             };
         } & {
+            code: string | null;
             enabledById: string | null;
             id: string;
             createdAt: Date;
@@ -156,7 +162,9 @@ export declare class PaymentController {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            name: string | null;
             bankId: string;
+            branch: string | null;
             accountNumber: string;
             accountName: string;
         };
@@ -220,6 +228,7 @@ export declare class PaymentController {
                 disabledDate: Date | null;
             };
         } & {
+            code: string | null;
             enabledById: string | null;
             id: string;
             createdAt: Date;
@@ -228,7 +237,9 @@ export declare class PaymentController {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            name: string | null;
             bankId: string;
+            branch: string | null;
             accountNumber: string;
             accountName: string;
         };

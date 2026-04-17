@@ -18,13 +18,15 @@ exports.CheckoutOrderSchema = zod_1.z
         expectedBankAccountId: zod_1.z.string().uuid().optional(),
         paymentOptionRefernce: zod_1.z.string().optional(),
         remark: zod_1.z.string().max(300).optional(),
+        vatAmount: zod_1.z.number().min(0).optional(),
+        withholdingAmount: zod_1.z.number().min(0).optional(),
     }),
     items: zod_1.z
         .array(zod_1.z.object({
         productVariantId: zod_1.z.string().uuid(),
-        productVariantPriceId: zod_1.z.string().uuid(),
+        productVariantPriceId: zod_1.z.string().uuid().optional(),
         purchasedQuantity: zod_1.z.number().int().min(1),
-        price: zod_1.z.number().int(),
+        price: zod_1.z.number().min(0),
         currency: zod_1.z.string().max(3),
     }))
         .min(1),

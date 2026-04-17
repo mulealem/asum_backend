@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreatePaymentDto } from './dto/create-payment.dto';
 import { UpdatePaymentDto } from './dto/update-payment.dto';
 import { PrismaService } from '../prisma.service';
+import { LedgerDirection } from '@prisma/client';
 
 @Injectable()
 export class PaymentService {
@@ -47,6 +48,20 @@ export class PaymentService {
           },
         },
       });
+
+      // Write a CREDIT ledger entry so the bank account balance reflects this receipt
+      if (bankAccountId) {
+        await tx.bankLedgerEntry.create({
+          data: {
+            direction: LedgerDirection.CREDIT,
+            amount: rest.amount,
+            note: rest.receiptNumber ?? `Payment ${payment.id}`,
+            bankAccount: { connect: { id: bankAccountId } },
+            payment: { connect: { id: payment.id } },
+            enabledBy: { connect: { id: enabledById } },
+          },
+        });
+      }
 
       if (allocatedPayments.length === 0) {
         return payment;

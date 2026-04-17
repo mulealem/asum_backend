@@ -1,0 +1,311 @@
+import { CreateStockAdjustmentDto } from './dto/create-stock-adjustment.dto';
+import { PrismaService } from '../prisma.service';
+export declare class StockAdjustmentService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    create(data: CreateStockAdjustmentDto): Promise<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        remark: string | null;
+        stockId: string;
+        quantity: number;
+        adjustReasonId: string;
+    }>;
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<({
+        stock: {
+            productVariant: {
+                product: {
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
+                    enabledById: string | null;
+                    id: string;
+                    createdAt: Date;
+                    isEnabled: boolean;
+                    enableRemark: string | null;
+                    disableRemark: string | null;
+                    disabledById: string | null;
+                    disabledDate: Date | null;
+                    typeOfProductId: string;
+                };
+            } & {
+                code: string;
+                enabledById: string | null;
+                id: string;
+                createdAt: Date;
+                isEnabled: boolean;
+                enableRemark: string | null;
+                disableRemark: string | null;
+                disabledById: string | null;
+                disabledDate: Date | null;
+                productId: string;
+                brandId: string;
+            };
+        } & {
+            enabledById: string | null;
+            id: string;
+            createdAt: Date;
+            isEnabled: boolean;
+            enableRemark: string | null;
+            disableRemark: string | null;
+            disabledById: string | null;
+            disabledDate: Date | null;
+            productVariantId: string;
+            supplierId: string;
+            locationId: string;
+            batchId: string;
+            totalPurchasedUnits: number;
+            remainingUnits: number;
+            manufacturedDate: Date | null;
+            expirationDate: Date | null;
+            referenceNumber: string | null;
+            receiptNumber: string | null;
+            stockSourceId: string;
+            transportationFree: number;
+            taxFee: number;
+            miscellaneousFee: number;
+            purchasePrice: number;
+            expectedRetailPrice: number;
+        };
+        adjustReason: {
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
+            enabledById: string | null;
+            id: string;
+            createdAt: Date;
+            isEnabled: boolean;
+            enableRemark: string | null;
+            disableRemark: string | null;
+            disabledById: string | null;
+            disabledDate: Date | null;
+        };
+    } & {
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        remark: string | null;
+        stockId: string;
+        quantity: number;
+        adjustReasonId: string;
+    })[]>;
+    filter(query: any): import(".prisma/client").Prisma.PrismaPromise<({
+        stock: {
+            productVariant: {
+                product: {
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
+                    enabledById: string | null;
+                    id: string;
+                    createdAt: Date;
+                    isEnabled: boolean;
+                    enableRemark: string | null;
+                    disableRemark: string | null;
+                    disabledById: string | null;
+                    disabledDate: Date | null;
+                    typeOfProductId: string;
+                };
+            } & {
+                code: string;
+                enabledById: string | null;
+                id: string;
+                createdAt: Date;
+                isEnabled: boolean;
+                enableRemark: string | null;
+                disableRemark: string | null;
+                disabledById: string | null;
+                disabledDate: Date | null;
+                productId: string;
+                brandId: string;
+            };
+        } & {
+            enabledById: string | null;
+            id: string;
+            createdAt: Date;
+            isEnabled: boolean;
+            enableRemark: string | null;
+            disableRemark: string | null;
+            disabledById: string | null;
+            disabledDate: Date | null;
+            productVariantId: string;
+            supplierId: string;
+            locationId: string;
+            batchId: string;
+            totalPurchasedUnits: number;
+            remainingUnits: number;
+            manufacturedDate: Date | null;
+            expirationDate: Date | null;
+            referenceNumber: string | null;
+            receiptNumber: string | null;
+            stockSourceId: string;
+            transportationFree: number;
+            taxFee: number;
+            miscellaneousFee: number;
+            purchasePrice: number;
+            expectedRetailPrice: number;
+        };
+        adjustReason: {
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
+            enabledById: string | null;
+            id: string;
+            createdAt: Date;
+            isEnabled: boolean;
+            enableRemark: string | null;
+            disableRemark: string | null;
+            disabledById: string | null;
+            disabledDate: Date | null;
+        };
+    } & {
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        remark: string | null;
+        stockId: string;
+        quantity: number;
+        adjustReasonId: string;
+    })[]>;
+    findOne(id: string): import(".prisma/client").Prisma.Prisma__StockAdjustmentClient<{
+        stock: {
+            productVariant: {
+                product: {
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
+                    enabledById: string | null;
+                    id: string;
+                    createdAt: Date;
+                    isEnabled: boolean;
+                    enableRemark: string | null;
+                    disableRemark: string | null;
+                    disabledById: string | null;
+                    disabledDate: Date | null;
+                    typeOfProductId: string;
+                };
+            } & {
+                code: string;
+                enabledById: string | null;
+                id: string;
+                createdAt: Date;
+                isEnabled: boolean;
+                enableRemark: string | null;
+                disableRemark: string | null;
+                disabledById: string | null;
+                disabledDate: Date | null;
+                productId: string;
+                brandId: string;
+            };
+        } & {
+            enabledById: string | null;
+            id: string;
+            createdAt: Date;
+            isEnabled: boolean;
+            enableRemark: string | null;
+            disableRemark: string | null;
+            disabledById: string | null;
+            disabledDate: Date | null;
+            productVariantId: string;
+            supplierId: string;
+            locationId: string;
+            batchId: string;
+            totalPurchasedUnits: number;
+            remainingUnits: number;
+            manufacturedDate: Date | null;
+            expirationDate: Date | null;
+            referenceNumber: string | null;
+            receiptNumber: string | null;
+            stockSourceId: string;
+            transportationFree: number;
+            taxFee: number;
+            miscellaneousFee: number;
+            purchasePrice: number;
+            expectedRetailPrice: number;
+        };
+        adjustReason: {
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
+            enabledById: string | null;
+            id: string;
+            createdAt: Date;
+            isEnabled: boolean;
+            enableRemark: string | null;
+            disableRemark: string | null;
+            disabledById: string | null;
+            disabledDate: Date | null;
+        };
+    } & {
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        remark: string | null;
+        stockId: string;
+        quantity: number;
+        adjustReasonId: string;
+    }, null, import("@prisma/client/runtime/library").DefaultArgs>;
+    enable(id: string): import(".prisma/client").Prisma.Prisma__StockAdjustmentClient<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        remark: string | null;
+        stockId: string;
+        quantity: number;
+        adjustReasonId: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    disable(id: string, disabledById: string): import(".prisma/client").Prisma.Prisma__StockAdjustmentClient<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        remark: string | null;
+        stockId: string;
+        quantity: number;
+        adjustReasonId: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    remove(id: string): import(".prisma/client").Prisma.Prisma__StockAdjustmentClient<{
+        enabledById: string | null;
+        id: string;
+        createdAt: Date;
+        isEnabled: boolean;
+        enableRemark: string | null;
+        disableRemark: string | null;
+        disabledById: string | null;
+        disabledDate: Date | null;
+        remark: string | null;
+        stockId: string;
+        quantity: number;
+        adjustReasonId: string;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+}

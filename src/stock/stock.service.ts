@@ -108,6 +108,7 @@ export class StockService {
           include: {
             product: true,
             ProductVariantAttribute: true,
+            ProductVariantPrice: true,
           },
         },
         supplier: true,

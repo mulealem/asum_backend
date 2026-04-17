@@ -219,6 +219,8 @@ export declare class OrderItemService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     }>;
     update(id: string, updateOrderItemDto: UpdateOrderItemDto): import(".prisma/client").Prisma.Prisma__OrderItemClient<{
         enabledById: string | null;

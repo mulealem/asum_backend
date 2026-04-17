@@ -47,6 +47,12 @@ const dashboard_module_1 = require("./dashboard/dashboard.module");
 const report_module_1 = require("./report/report.module");
 const purchase_request_module_1 = require("./purchase-request/purchase-request.module");
 const purchase_request_item_module_1 = require("./purchase-request-item/purchase-request-item.module");
+const expense_module_1 = require("./expense/expense.module");
+const organization_setting_module_1 = require("./organization-setting/organization-setting.module");
+const tax_module_1 = require("./tax/tax.module");
+const stock_adjust_reason_module_1 = require("./stock-adjust-reason/stock-adjust-reason.module");
+const stock_adjustment_module_1 = require("./stock-adjustment/stock-adjustment.module");
+const proforma_module_1 = require("./proforma/proforma.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -92,6 +98,12 @@ exports.AppModule = AppModule = __decorate([
             report_module_1.ReportModule,
             purchase_request_module_1.PurchaseRequestModule,
             purchase_request_item_module_1.PurchaseRequestItemModule,
+            expense_module_1.ExpenseModule,
+            organization_setting_module_1.OrganizationSettingModule,
+            tax_module_1.TaxModule,
+            stock_adjust_reason_module_1.StockAdjustReasonModule,
+            stock_adjustment_module_1.StockAdjustmentModule,
+            proforma_module_1.ProformaModule,
         ],
         controllers: [],
         providers: [],

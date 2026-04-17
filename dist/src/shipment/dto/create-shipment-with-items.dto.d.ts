@@ -22,24 +22,24 @@ export declare const CreateShipmentWithItemsSchema: z.ZodObject<{
         quantity?: number;
         orderItemFulfillmentId?: string;
     }[];
+    note?: string;
     carrierId?: string;
     fromLocationId?: string;
     toLocationId?: string;
     shipmentNumber?: string;
     shipmentScheduledDate?: Date;
     expectedArrivalDate?: Date;
-    note?: string;
 }, {
     items?: {
         quantity?: number;
         orderItemFulfillmentId?: string;
     }[];
+    note?: string;
     carrierId?: string;
     fromLocationId?: string;
     toLocationId?: string;
     shipmentNumber?: string;
     shipmentScheduledDate?: Date;
     expectedArrivalDate?: Date;
-    note?: string;
 }>;
 export type CreateShipmentWithItemsDto = z.infer<typeof CreateShipmentWithItemsSchema>;

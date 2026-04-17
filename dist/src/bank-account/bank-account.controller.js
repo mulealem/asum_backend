@@ -49,6 +49,12 @@ let BankAccountController = class BankAccountController {
     disable(id, req) {
         return this.bankAccountService.disable(id, req.user.userId);
     }
+    getBalance(id) {
+        return this.bankAccountService.getBalance(id);
+    }
+    getStatement(id, startDate, endDate) {
+        return this.bankAccountService.getStatement(id, startDate ? new Date(startDate) : undefined, endDate ? new Date(endDate) : undefined);
+    }
 };
 exports.BankAccountController = BankAccountController;
 __decorate([
@@ -112,6 +118,22 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", void 0)
 ], BankAccountController.prototype, "disable", null);
+__decorate([
+    (0, common_1.Get)(':id/balance'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], BankAccountController.prototype, "getBalance", null);
+__decorate([
+    (0, common_1.Get)(':id/statement'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Query)('startDate')),
+    __param(2, (0, common_1.Query)('endDate')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String]),
+    __metadata("design:returntype", void 0)
+], BankAccountController.prototype, "getStatement", null);
 exports.BankAccountController = BankAccountController = __decorate([
     (0, common_1.Controller)('bank-account'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

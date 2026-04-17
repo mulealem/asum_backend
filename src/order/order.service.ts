@@ -56,27 +56,41 @@ export class OrderService {
           enabledBy: { connect: { id: enabledById } },
           paymentOptionRefernce: data.order.paymentOptionRefernce,
           remark: data.order.remark,
+          vatAmount: data.order.vatAmount,
+          withholdingAmount: data.order.withholdingAmount,
           orderNumber,
         },
       });
 
-      // 3. Create all order items
+      // 3. Create all order items (auto-create price when not provided)
       const orderItems = await Promise.all(
-        data.items.map((item) =>
-          tx.orderItem.create({
+        data.items.map(async (item) => {
+          let priceId = item.productVariantPriceId;
+
+          if (!priceId) {
+            const newPrice = await tx.productVariantPrice.create({
+              data: {
+                listPrice: item.price,
+                currency: item.currency,
+                productVariant: { connect: { id: item.productVariantId } },
+                enabledBy: { connect: { id: enabledById } },
+              },
+            });
+            priceId = newPrice.id;
+          }
+
+          return tx.orderItem.create({
             data: {
               order: { connect: { id: order.id } },
               productVariant: { connect: { id: item.productVariantId } },
-              productVariantPrice: {
-                connect: { id: item.productVariantPriceId },
-              },
+              productVariantPrice: { connect: { id: priceId } },
               purchasedQuantity: item.purchasedQuantity,
               orderQuantity: item.purchasedQuantity,
               price: item.price,
               currency: item.currency,
             },
-          }),
-        ),
+          });
+        }),
       );
 
       return { customerId, order, orderItems };

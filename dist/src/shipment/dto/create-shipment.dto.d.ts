@@ -21,20 +21,20 @@ export declare const CreateShipmentSchema: z.ZodObject<{
     type: z.ZodDefault<z.ZodEnum<["ORDER", "TRANSFER"]>>;
 }, "strip", z.ZodTypeAny, {
     type?: "ORDER" | "TRANSFER";
+    note?: string;
     carrierId?: string;
     fromLocationId?: string;
     toLocationId?: string;
     shipmentNumber?: string;
     shipmentScheduledDate?: Date;
     expectedArrivalDate?: Date;
-    note?: string;
 }, {
     type?: "ORDER" | "TRANSFER";
+    note?: string;
     carrierId?: string;
     fromLocationId?: string;
     toLocationId?: string;
     shipmentNumber?: string;
     shipmentScheduledDate?: Date;
     expectedArrivalDate?: Date;
-    note?: string;
 }>;

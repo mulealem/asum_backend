@@ -33,6 +33,8 @@ export declare class OrderService {
             isPartiallyShipped: boolean;
             isFullyShipped: boolean;
             orderNumber: number;
+            vatAmount: number | null;
+            withholdingAmount: number | null;
         };
         orderItems: {
             enabledById: string | null;
@@ -87,6 +89,8 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     }>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
         paymentOption: {
@@ -143,6 +147,7 @@ export declare class OrderService {
             shippedQuantity: number;
         }[];
         expectedBankAccount: {
+            code: string | null;
             enabledById: string | null;
             id: string;
             createdAt: Date;
@@ -151,7 +156,9 @@ export declare class OrderService {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            name: string | null;
             bankId: string;
+            branch: string | null;
             accountNumber: string;
             accountName: string;
         };
@@ -181,6 +188,8 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     })[]>;
     filter(query: any): import(".prisma/client").Prisma.PrismaPromise<({
         paymentOption: {
@@ -279,6 +288,7 @@ export declare class OrderService {
             shippedQuantity: number;
         })[];
         expectedBankAccount: {
+            code: string | null;
             enabledById: string | null;
             id: string;
             createdAt: Date;
@@ -287,7 +297,9 @@ export declare class OrderService {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            name: string | null;
             bankId: string;
+            branch: string | null;
             accountNumber: string;
             accountName: string;
         };
@@ -317,6 +329,8 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     })[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__OrderClient<{
         paymentOption: {
@@ -373,6 +387,7 @@ export declare class OrderService {
             shippedQuantity: number;
         }[];
         expectedBankAccount: {
+            code: string | null;
             enabledById: string | null;
             id: string;
             createdAt: Date;
@@ -381,7 +396,9 @@ export declare class OrderService {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            name: string | null;
             bankId: string;
+            branch: string | null;
             accountNumber: string;
             accountName: string;
         };
@@ -411,6 +428,8 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     pendingPayments(): import(".prisma/client").Prisma.PrismaPromise<({
         paymentOption: {
@@ -509,6 +528,7 @@ export declare class OrderService {
             shippedQuantity: number;
         })[];
         expectedBankAccount: {
+            code: string | null;
             enabledById: string | null;
             id: string;
             createdAt: Date;
@@ -517,7 +537,9 @@ export declare class OrderService {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            name: string | null;
             bankId: string;
+            branch: string | null;
             accountNumber: string;
             accountName: string;
         };
@@ -560,6 +582,8 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     })[]>;
     completedPayments(): import(".prisma/client").Prisma.PrismaPromise<({
         paymentOption: {
@@ -616,6 +640,7 @@ export declare class OrderService {
             shippedQuantity: number;
         }[];
         expectedBankAccount: {
+            code: string | null;
             enabledById: string | null;
             id: string;
             createdAt: Date;
@@ -624,7 +649,9 @@ export declare class OrderService {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            name: string | null;
             bankId: string;
+            branch: string | null;
             accountNumber: string;
             accountName: string;
         };
@@ -667,6 +694,8 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     })[]>;
     update(id: string, updateOrderDto: UpdateOrderDto): import(".prisma/client").Prisma.Prisma__OrderClient<{
         status: import(".prisma/client").$Enums.OrderStatus;
@@ -694,6 +723,8 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     approve(id: string): Promise<{
         status: import(".prisma/client").$Enums.OrderStatus;
@@ -721,6 +752,8 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     }>;
     enable(id: string): import(".prisma/client").Prisma.Prisma__OrderClient<{
         status: import(".prisma/client").$Enums.OrderStatus;
@@ -748,6 +781,8 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     disable(id: string, disabledById: string): import(".prisma/client").Prisma.Prisma__OrderClient<{
         status: import(".prisma/client").$Enums.OrderStatus;
@@ -775,6 +810,8 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__OrderClient<{
         status: import(".prisma/client").$Enums.OrderStatus;
@@ -802,5 +839,7 @@ export declare class OrderService {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

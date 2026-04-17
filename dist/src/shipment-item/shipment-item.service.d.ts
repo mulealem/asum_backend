@@ -242,6 +242,8 @@ export declare class ShipmentItemService {
                     isPartiallyShipped: boolean;
                     isFullyShipped: boolean;
                     orderNumber: number;
+                    vatAmount: number | null;
+                    withholdingAmount: number | null;
                 };
             } & {
                 enabledById: string | null;
@@ -293,13 +295,13 @@ export declare class ShipmentItemService {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            note: string | null;
             carrierId: string;
             fromLocationId: string | null;
             toLocationId: string | null;
             shipmentNumber: string;
             shipmentScheduledDate: Date;
             expectedArrivalDate: Date | null;
-            note: string | null;
             isShipmentStarted: boolean;
             shipmentStartDate: Date | null;
             shipmentStartedById: string | null;
@@ -560,6 +562,8 @@ export declare class ShipmentItemService {
                     isPartiallyShipped: boolean;
                     isFullyShipped: boolean;
                     orderNumber: number;
+                    vatAmount: number | null;
+                    withholdingAmount: number | null;
                 };
             } & {
                 enabledById: string | null;
@@ -611,13 +615,13 @@ export declare class ShipmentItemService {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            note: string | null;
             carrierId: string;
             fromLocationId: string | null;
             toLocationId: string | null;
             shipmentNumber: string;
             shipmentScheduledDate: Date;
             expectedArrivalDate: Date | null;
-            note: string | null;
             isShipmentStarted: boolean;
             shipmentStartDate: Date | null;
             shipmentStartedById: string | null;
@@ -863,6 +867,8 @@ export declare class ShipmentItemService {
                     isPartiallyShipped: boolean;
                     isFullyShipped: boolean;
                     orderNumber: number;
+                    vatAmount: number | null;
+                    withholdingAmount: number | null;
                 };
             } & {
                 enabledById: string | null;
@@ -914,13 +920,13 @@ export declare class ShipmentItemService {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            note: string | null;
             carrierId: string;
             fromLocationId: string | null;
             toLocationId: string | null;
             shipmentNumber: string;
             shipmentScheduledDate: Date;
             expectedArrivalDate: Date | null;
-            note: string | null;
             isShipmentStarted: boolean;
             shipmentStartDate: Date | null;
             shipmentStartedById: string | null;

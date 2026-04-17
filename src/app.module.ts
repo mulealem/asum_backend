@@ -41,7 +41,13 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ReportModule } from './report/report.module';
 import { PurchaseRequestModule } from './purchase-request/purchase-request.module';
 import { PurchaseRequestItemModule } from './purchase-request-item/purchase-request-item.module';
+import { ExpenseModule } from './expense/expense.module';
 import { PermissionsGuard } from './auth/permissions.guard';
+import { OrganizationSettingModule } from './organization-setting/organization-setting.module';
+import { TaxModule } from './tax/tax.module';
+import { StockAdjustReasonModule } from './stock-adjust-reason/stock-adjust-reason.module';
+import { StockAdjustmentModule } from './stock-adjustment/stock-adjustment.module';
+import { ProformaModule } from './proforma/proforma.module';
 
 @Module({
   imports: [
@@ -84,6 +90,12 @@ import { PermissionsGuard } from './auth/permissions.guard';
     ReportModule,
     PurchaseRequestModule,
     PurchaseRequestItemModule,
+    ExpenseModule,
+    OrganizationSettingModule,
+    TaxModule,
+    StockAdjustReasonModule,
+    StockAdjustmentModule,
+    ProformaModule,
   ],
   controllers: [],
   providers: [],

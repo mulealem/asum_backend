@@ -10,6 +10,7 @@ import {
   UseGuards,
   HttpCode,
   Req,
+  Query,
 } from '@nestjs/common';
 import { BankAccountService } from './bank-account.service';
 import {
@@ -71,5 +72,23 @@ export class BankAccountController {
   @Patch(':id/disable')
   disable(@Param('id') id: string, @Req() req) {
     return this.bankAccountService.disable(id, req.user.userId);
+  }
+
+  @Get(':id/balance')
+  getBalance(@Param('id') id: string) {
+    return this.bankAccountService.getBalance(id);
+  }
+
+  @Get(':id/statement')
+  getStatement(
+    @Param('id') id: string,
+    @Query('startDate') startDate?: string,
+    @Query('endDate') endDate?: string,
+  ) {
+    return this.bankAccountService.getStatement(
+      id,
+      startDate ? new Date(startDate) : undefined,
+      endDate ? new Date(endDate) : undefined,
+    );
   }
 }

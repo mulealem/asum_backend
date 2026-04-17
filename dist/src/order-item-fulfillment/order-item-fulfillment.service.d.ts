@@ -156,6 +156,8 @@ export declare class OrderItemFulfillmentService {
                 isPartiallyShipped: boolean;
                 isFullyShipped: boolean;
                 orderNumber: number;
+                vatAmount: number | null;
+                withholdingAmount: number | null;
             };
         } & {
             enabledById: string | null;
@@ -361,6 +363,8 @@ export declare class OrderItemFulfillmentService {
                 isPartiallyShipped: boolean;
                 isFullyShipped: boolean;
                 orderNumber: number;
+                vatAmount: number | null;
+                withholdingAmount: number | null;
             };
         } & {
             enabledById: string | null;
@@ -566,6 +570,8 @@ export declare class OrderItemFulfillmentService {
                 isPartiallyShipped: boolean;
                 isFullyShipped: boolean;
                 orderNumber: number;
+                vatAmount: number | null;
+                withholdingAmount: number | null;
             };
         } & {
             enabledById: string | null;

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BankAccountService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma.service");
+const client_1 = require("@prisma/client");
 let BankAccountService = class BankAccountService {
     constructor(prisma) {
         this.prisma = prisma;
@@ -97,6 +98,60 @@ let BankAccountService = class BankAccountService {
                 disabledDate: new Date(),
             },
         });
+    }
+    async getBalance(id) {
+        const entries = await this.prisma.bankLedgerEntry.findMany({
+            where: { bankAccountId: id, isEnabled: true },
+            select: { direction: true, amount: true },
+        });
+        const balance = entries.reduce((acc, entry) => {
+            return entry.direction === client_1.LedgerDirection.CREDIT
+                ? acc + entry.amount
+                : acc - entry.amount;
+        }, 0);
+        return { bankAccountId: id, balance };
+    }
+    async getStatement(id, startDate, endDate) {
+        const entries = await this.prisma.bankLedgerEntry.findMany({
+            where: {
+                bankAccountId: id,
+                isEnabled: true,
+                ...(startDate || endDate
+                    ? {
+                        createdAt: {
+                            ...(startDate ? { gte: startDate } : {}),
+                            ...(endDate ? { lte: endDate } : {}),
+                        },
+                    }
+                    : {}),
+            },
+            include: {
+                payment: { select: { id: true, amount: true, receiptNumber: true } },
+                expense: { select: { id: true, category: true, description: true } },
+            },
+            orderBy: { createdAt: 'asc' },
+        });
+        let runningBalance = 0;
+        const rows = entries.map((entry) => {
+            runningBalance +=
+                entry.direction === client_1.LedgerDirection.CREDIT
+                    ? entry.amount
+                    : -entry.amount;
+            return { ...entry, runningBalance };
+        });
+        const totalCredits = entries
+            .filter((e) => e.direction === client_1.LedgerDirection.CREDIT)
+            .reduce((s, e) => s + e.amount, 0);
+        const totalDebits = entries
+            .filter((e) => e.direction === client_1.LedgerDirection.DEBIT)
+            .reduce((s, e) => s + e.amount, 0);
+        return {
+            bankAccountId: id,
+            totalCredits,
+            totalDebits,
+            closingBalance: totalCredits - totalDebits,
+            entries: rows,
+        };
     }
 };
 exports.BankAccountService = BankAccountService;

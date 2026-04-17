@@ -240,6 +240,8 @@ export declare class ShipmentItemController {
                     isPartiallyShipped: boolean;
                     isFullyShipped: boolean;
                     orderNumber: number;
+                    vatAmount: number | null;
+                    withholdingAmount: number | null;
                 };
             } & {
                 enabledById: string | null;
@@ -291,13 +293,13 @@ export declare class ShipmentItemController {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            note: string | null;
             carrierId: string;
             fromLocationId: string | null;
             toLocationId: string | null;
             shipmentNumber: string;
             shipmentScheduledDate: Date;
             expectedArrivalDate: Date | null;
-            note: string | null;
             isShipmentStarted: boolean;
             shipmentStartDate: Date | null;
             shipmentStartedById: string | null;
@@ -558,6 +560,8 @@ export declare class ShipmentItemController {
                     isPartiallyShipped: boolean;
                     isFullyShipped: boolean;
                     orderNumber: number;
+                    vatAmount: number | null;
+                    withholdingAmount: number | null;
                 };
             } & {
                 enabledById: string | null;
@@ -609,13 +613,13 @@ export declare class ShipmentItemController {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            note: string | null;
             carrierId: string;
             fromLocationId: string | null;
             toLocationId: string | null;
             shipmentNumber: string;
             shipmentScheduledDate: Date;
             expectedArrivalDate: Date | null;
-            note: string | null;
             isShipmentStarted: boolean;
             shipmentStartDate: Date | null;
             shipmentStartedById: string | null;
@@ -861,6 +865,8 @@ export declare class ShipmentItemController {
                     isPartiallyShipped: boolean;
                     isFullyShipped: boolean;
                     orderNumber: number;
+                    vatAmount: number | null;
+                    withholdingAmount: number | null;
                 };
             } & {
                 enabledById: string | null;
@@ -912,13 +918,13 @@ export declare class ShipmentItemController {
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            note: string | null;
             carrierId: string;
             fromLocationId: string | null;
             toLocationId: string | null;
             shipmentNumber: string;
             shipmentScheduledDate: Date;
             expectedArrivalDate: Date | null;
-            note: string | null;
             isShipmentStarted: boolean;
             shipmentStartDate: Date | null;
             shipmentStartedById: string | null;

@@ -16,14 +16,16 @@ export const CheckoutOrderSchema = z
       expectedBankAccountId: z.string().uuid().optional(),
       paymentOptionRefernce: z.string().optional(),
       remark: z.string().max(300).optional(),
+      vatAmount: z.number().min(0).optional(),
+      withholdingAmount: z.number().min(0).optional(),
     }),
     items: z
       .array(
         z.object({
           productVariantId: z.string().uuid(),
-          productVariantPriceId: z.string().uuid(),
+          productVariantPriceId: z.string().uuid().optional(),
           purchasedQuantity: z.number().int().min(1),
-          price: z.number().int(),
+          price: z.number().min(0),
           currency: z.string().max(3),
         }),
       )

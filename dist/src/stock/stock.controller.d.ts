@@ -98,6 +98,20 @@ export declare class StockController {
                 productVariantId: string;
                 key: string;
             }[];
+            ProductVariantPrice: {
+                enabledById: string | null;
+                id: string;
+                createdAt: Date;
+                isEnabled: boolean;
+                enableRemark: string | null;
+                disableRemark: string | null;
+                disabledById: string | null;
+                disabledDate: Date | null;
+                productVariantId: string;
+                listPrice: number;
+                currency: string;
+                tag: string | null;
+            }[];
         } & {
             code: string;
             enabledById: string | null;

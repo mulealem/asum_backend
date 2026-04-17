@@ -244,6 +244,8 @@ export declare class OrderItemController {
         isPartiallyShipped: boolean;
         isFullyShipped: boolean;
         orderNumber: number;
+        vatAmount: number | null;
+        withholdingAmount: number | null;
     }>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__OrderItemClient<{
         enabledById: string | null;

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PaymentService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma.service");
+const client_1 = require("@prisma/client");
 let PaymentService = class PaymentService {
     constructor(prisma) {
         this.prisma = prisma;
@@ -46,6 +47,18 @@ let PaymentService = class PaymentService {
                     },
                 },
             });
+            if (bankAccountId) {
+                await tx.bankLedgerEntry.create({
+                    data: {
+                        direction: client_1.LedgerDirection.CREDIT,
+                        amount: rest.amount,
+                        note: rest.receiptNumber ?? `Payment ${payment.id}`,
+                        bankAccount: { connect: { id: bankAccountId } },
+                        payment: { connect: { id: payment.id } },
+                        enabledBy: { connect: { id: enabledById } },
+                    },
+                });
+            }
             if (allocatedPayments.length === 0) {
                 return payment;
             }

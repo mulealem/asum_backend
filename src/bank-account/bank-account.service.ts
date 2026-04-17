@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateBankAccountDto } from './dto/create-bank-account.dto';
 import { UpdateBankAccountDto } from './dto/update-bank-account.dto';
 import { PrismaService } from '../prisma.service';
+import { LedgerDirection } from '@prisma/client';
 
 @Injectable()
 export class BankAccountService {
@@ -98,5 +99,66 @@ export class BankAccountService {
         disabledDate: new Date(),
       },
     });
+  }
+
+  async getBalance(id: string) {
+    const entries = await this.prisma.bankLedgerEntry.findMany({
+      where: { bankAccountId: id, isEnabled: true },
+      select: { direction: true, amount: true },
+    });
+
+    const balance = entries.reduce((acc, entry) => {
+      return entry.direction === LedgerDirection.CREDIT
+        ? acc + entry.amount
+        : acc - entry.amount;
+    }, 0);
+
+    return { bankAccountId: id, balance };
+  }
+
+  async getStatement(id: string, startDate?: Date, endDate?: Date) {
+    const entries = await this.prisma.bankLedgerEntry.findMany({
+      where: {
+        bankAccountId: id,
+        isEnabled: true,
+        ...(startDate || endDate
+          ? {
+              createdAt: {
+                ...(startDate ? { gte: startDate } : {}),
+                ...(endDate ? { lte: endDate } : {}),
+              },
+            }
+          : {}),
+      },
+      include: {
+        payment: { select: { id: true, amount: true, receiptNumber: true } },
+        expense: { select: { id: true, category: true, description: true } },
+      },
+      orderBy: { createdAt: 'asc' },
+    });
+
+    let runningBalance = 0;
+    const rows = entries.map((entry) => {
+      runningBalance +=
+        entry.direction === LedgerDirection.CREDIT
+          ? entry.amount
+          : -entry.amount;
+      return { ...entry, runningBalance };
+    });
+
+    const totalCredits = entries
+      .filter((e) => e.direction === LedgerDirection.CREDIT)
+      .reduce((s, e) => s + e.amount, 0);
+    const totalDebits = entries
+      .filter((e) => e.direction === LedgerDirection.DEBIT)
+      .reduce((s, e) => s + e.amount, 0);
+
+    return {
+      bankAccountId: id,
+      totalCredits,
+      totalDebits,
+      closingBalance: totalCredits - totalDebits,
+      entries: rows,
+    };
   }
 }
