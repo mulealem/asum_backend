@@ -64,8 +64,8 @@ export declare const OrderItemParameterSchema: z.ZodObject<{
     enabledEndDate?: string;
     disabledStartDate?: string;
     disabledEndDate?: string;
-    currency?: string;
     productVariantIds?: string[];
+    currency?: string;
     isPartiallyFulfilled?: boolean;
     isFullyFulfilled?: boolean;
     isPartiallyShipped?: boolean;
@@ -89,8 +89,8 @@ export declare const OrderItemParameterSchema: z.ZodObject<{
     enabledEndDate?: string;
     disabledStartDate?: string;
     disabledEndDate?: string;
-    currency?: string;
     productVariantIds?: string[];
+    currency?: string;
     isPartiallyFulfilled?: boolean;
     isFullyFulfilled?: boolean;
     isPartiallyShipped?: boolean;
