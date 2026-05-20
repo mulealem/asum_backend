@@ -4,43 +4,43 @@ export declare class StockAdjustmentController {
     private readonly stockAdjustmentService;
     constructor(stockAdjustmentService: StockAdjustmentService);
     create(dto: CreateStockAdjustmentDto, req: any): Promise<{
-        enabledById: string | null;
+        remark: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        remark: string | null;
         stockId: string;
-        quantity: number;
         adjustReasonId: string;
     }>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
         stock: {
             productVariant: {
                 product: {
-                    title: string;
-                    abbreviation: string | null;
-                    description: string | null;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
                     typeOfProductId: string;
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
                 };
             } & {
                 code: string;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -48,15 +48,15 @@ export declare class StockAdjustmentController {
                 brandId: string;
             };
         } & {
-            enabledById: string | null;
+            productVariantId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             supplierId: string;
             locationId: string;
             batchId: string;
@@ -74,56 +74,56 @@ export declare class StockAdjustmentController {
             expectedRetailPrice: number;
         };
         adjustReason: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
     } & {
-        enabledById: string | null;
+        remark: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        remark: string | null;
         stockId: string;
-        quantity: number;
         adjustReasonId: string;
     })[]>;
     search(query: any): import(".prisma/client").Prisma.PrismaPromise<({
         stock: {
             productVariant: {
                 product: {
-                    title: string;
-                    abbreviation: string | null;
-                    description: string | null;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
                     typeOfProductId: string;
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
                 };
             } & {
                 code: string;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -131,15 +131,15 @@ export declare class StockAdjustmentController {
                 brandId: string;
             };
         } & {
-            enabledById: string | null;
+            productVariantId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             supplierId: string;
             locationId: string;
             batchId: string;
@@ -157,56 +157,56 @@ export declare class StockAdjustmentController {
             expectedRetailPrice: number;
         };
         adjustReason: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
     } & {
-        enabledById: string | null;
+        remark: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        remark: string | null;
         stockId: string;
-        quantity: number;
         adjustReasonId: string;
     })[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__StockAdjustmentClient<{
         stock: {
             productVariant: {
                 product: {
-                    title: string;
-                    abbreviation: string | null;
-                    description: string | null;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
                     typeOfProductId: string;
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
                 };
             } & {
                 code: string;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -214,15 +214,15 @@ export declare class StockAdjustmentController {
                 brandId: string;
             };
         } & {
-            enabledById: string | null;
+            productVariantId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             supplierId: string;
             locationId: string;
             batchId: string;
@@ -240,72 +240,72 @@ export declare class StockAdjustmentController {
             expectedRetailPrice: number;
         };
         adjustReason: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
     } & {
-        enabledById: string | null;
+        remark: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        remark: string | null;
         stockId: string;
-        quantity: number;
         adjustReasonId: string;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__StockAdjustmentClient<{
-        enabledById: string | null;
+        remark: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        remark: string | null;
         stockId: string;
-        quantity: number;
         adjustReasonId: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     enable(id: string): import(".prisma/client").Prisma.Prisma__StockAdjustmentClient<{
-        enabledById: string | null;
+        remark: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        remark: string | null;
         stockId: string;
-        quantity: number;
         adjustReasonId: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__StockAdjustmentClient<{
-        enabledById: string | null;
+        remark: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        remark: string | null;
         stockId: string;
-        quantity: number;
         adjustReasonId: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

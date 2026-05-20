@@ -9,11 +9,11 @@ export declare class OrderPaymentController {
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
         order: {
             customer: {
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -23,20 +23,20 @@ export declare class OrderPaymentController {
                 address: string;
             };
         } & {
+            customerId: string;
+            remark: string | null;
             status: import(".prisma/client").$Enums.OrderStatus;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            customerId: string;
             paymentOptionId: string;
             paymentOptionRefernce: string | null;
             expectedBankAccountId: string | null;
-            remark: string | null;
             isFullyPaid: boolean;
             isPartiallyPaid: boolean;
             isFullyApproved: boolean;
@@ -53,39 +53,39 @@ export declare class OrderPaymentController {
         };
         payment: {
             paymentOption: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
             bankAccount: {
                 bank: {
-                    title: string;
-                    abbreviation: string | null;
-                    description: string | null;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
                 };
             } & {
                 code: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -96,11 +96,11 @@ export declare class OrderPaymentController {
                 accountName: string;
             };
             customer: {
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -110,51 +110,51 @@ export declare class OrderPaymentController {
                 address: string;
             };
         } & {
-            enabledById: string | null;
+            customerId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             referenceNumber: string | null;
             receiptNumber: string | null;
-            customerId: string;
-            paymentOptionId: string;
             amount: number;
-            unassignedAmount: number | null;
             bankAccountId: string | null;
+            paymentOptionId: string;
+            unassignedAmount: number | null;
         };
     } & {
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         orderId: string;
-        paidAmount: number;
         paymentId: string;
+        paidAmount: number;
     })[]>;
     search(query: any): import(".prisma/client").Prisma.PrismaPromise<({
         order: {
+            customerId: string;
+            remark: string | null;
             status: import(".prisma/client").$Enums.OrderStatus;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            customerId: string;
             paymentOptionId: string;
             paymentOptionRefernce: string | null;
             expectedBankAccountId: string | null;
-            remark: string | null;
             isFullyPaid: boolean;
             isPartiallyPaid: boolean;
             isFullyApproved: boolean;
@@ -171,39 +171,39 @@ export declare class OrderPaymentController {
         };
         payment: {
             paymentOption: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
             bankAccount: {
                 bank: {
-                    title: string;
-                    abbreviation: string | null;
-                    description: string | null;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
                 };
             } & {
                 code: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -214,11 +214,11 @@ export declare class OrderPaymentController {
                 accountName: string;
             };
             customer: {
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -228,51 +228,51 @@ export declare class OrderPaymentController {
                 address: string;
             };
         } & {
-            enabledById: string | null;
+            customerId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             referenceNumber: string | null;
             receiptNumber: string | null;
-            customerId: string;
-            paymentOptionId: string;
             amount: number;
-            unassignedAmount: number | null;
             bankAccountId: string | null;
+            paymentOptionId: string;
+            unassignedAmount: number | null;
         };
     } & {
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         orderId: string;
-        paidAmount: number;
         paymentId: string;
+        paidAmount: number;
     })[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__OrderPaymentClient<{
         order: {
+            customerId: string;
+            remark: string | null;
             status: import(".prisma/client").$Enums.OrderStatus;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            customerId: string;
             paymentOptionId: string;
             paymentOptionRefernce: string | null;
             expectedBankAccountId: string | null;
-            remark: string | null;
             isFullyPaid: boolean;
             isPartiallyPaid: boolean;
             isFullyApproved: boolean;
@@ -289,39 +289,39 @@ export declare class OrderPaymentController {
         };
         payment: {
             paymentOption: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
             bankAccount: {
                 bank: {
-                    title: string;
-                    abbreviation: string | null;
-                    description: string | null;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
                 };
             } & {
                 code: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -332,11 +332,11 @@ export declare class OrderPaymentController {
                 accountName: string;
             };
             customer: {
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -346,85 +346,85 @@ export declare class OrderPaymentController {
                 address: string;
             };
         } & {
-            enabledById: string | null;
+            customerId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             referenceNumber: string | null;
             receiptNumber: string | null;
-            customerId: string;
-            paymentOptionId: string;
             amount: number;
-            unassignedAmount: number | null;
             bankAccountId: string | null;
+            paymentOptionId: string;
+            unassignedAmount: number | null;
         };
     } & {
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         orderId: string;
-        paidAmount: number;
         paymentId: string;
+        paidAmount: number;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     update(id: string, updateOrderPaymentDto: UpdateOrderPaymentDto): import(".prisma/client").Prisma.Prisma__OrderPaymentClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         orderId: string;
-        paidAmount: number;
         paymentId: string;
+        paidAmount: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__OrderPaymentClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         orderId: string;
-        paidAmount: number;
         paymentId: string;
+        paidAmount: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     enable(id: string): import(".prisma/client").Prisma.Prisma__OrderPaymentClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         orderId: string;
-        paidAmount: number;
         paymentId: string;
+        paidAmount: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__OrderPaymentClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         orderId: string;
-        paidAmount: number;
         paymentId: string;
+        paidAmount: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

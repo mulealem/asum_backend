@@ -5,11 +5,11 @@ export declare class CustomerController {
     private readonly customerService;
     constructor(customerService: CustomerService);
     create(createCustomerDto: CreateCustomerDto, req: any): import(".prisma/client").Prisma.Prisma__CustomerClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -19,11 +19,11 @@ export declare class CustomerController {
         address: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -33,11 +33,11 @@ export declare class CustomerController {
         address: string;
     }[]>;
     search(query: any): import(".prisma/client").Prisma.PrismaPromise<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -47,11 +47,11 @@ export declare class CustomerController {
         address: string;
     }[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__CustomerClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -61,11 +61,11 @@ export declare class CustomerController {
         address: string;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     update(id: string, updateCustomerDto: UpdateCustomerDto): import(".prisma/client").Prisma.Prisma__CustomerClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -75,11 +75,11 @@ export declare class CustomerController {
         address: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__CustomerClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -89,11 +89,11 @@ export declare class CustomerController {
         address: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     enable(id: string): import(".prisma/client").Prisma.Prisma__CustomerClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -103,11 +103,11 @@ export declare class CustomerController {
         address: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__CustomerClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;

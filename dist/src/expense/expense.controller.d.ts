@@ -7,25 +7,25 @@ export declare class ExpenseController {
     create(createExpenseDto: CreateExpenseDto, req: any): Promise<{
         bankAccount: {
             bank: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
         } & {
             code: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
@@ -36,42 +36,42 @@ export declare class ExpenseController {
             accountName: string;
         };
     } & {
-        description: string | null;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
+        description: string | null;
         referenceNumber: string | null;
+        category: import(".prisma/client").$Enums.ExpenseCategory;
         amount: number;
         bankAccountId: string;
-        category: import(".prisma/client").$Enums.ExpenseCategory;
     }>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
         bankAccount: {
             bank: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
         } & {
             code: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
@@ -82,42 +82,42 @@ export declare class ExpenseController {
             accountName: string;
         };
     } & {
-        description: string | null;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
+        description: string | null;
         referenceNumber: string | null;
+        category: import(".prisma/client").$Enums.ExpenseCategory;
         amount: number;
         bankAccountId: string;
-        category: import(".prisma/client").$Enums.ExpenseCategory;
     })[]>;
     search(query: any): import(".prisma/client").Prisma.PrismaPromise<({
         bankAccount: {
             bank: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
         } & {
             code: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
@@ -128,42 +128,42 @@ export declare class ExpenseController {
             accountName: string;
         };
     } & {
-        description: string | null;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
+        description: string | null;
         referenceNumber: string | null;
+        category: import(".prisma/client").$Enums.ExpenseCategory;
         amount: number;
         bankAccountId: string;
-        category: import(".prisma/client").$Enums.ExpenseCategory;
     })[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__ExpenseClient<{
         bankAccount: {
             bank: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
         } & {
             code: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
@@ -174,78 +174,78 @@ export declare class ExpenseController {
             accountName: string;
         };
     } & {
-        description: string | null;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
+        description: string | null;
         referenceNumber: string | null;
+        category: import(".prisma/client").$Enums.ExpenseCategory;
         amount: number;
         bankAccountId: string;
-        category: import(".prisma/client").$Enums.ExpenseCategory;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     update(id: string, updateExpenseDto: UpdateExpenseDto): import(".prisma/client").Prisma.Prisma__ExpenseClient<{
-        description: string | null;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
+        description: string | null;
         referenceNumber: string | null;
+        category: import(".prisma/client").$Enums.ExpenseCategory;
         amount: number;
         bankAccountId: string;
-        category: import(".prisma/client").$Enums.ExpenseCategory;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__ExpenseClient<{
-        description: string | null;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
+        description: string | null;
         referenceNumber: string | null;
+        category: import(".prisma/client").$Enums.ExpenseCategory;
         amount: number;
         bankAccountId: string;
-        category: import(".prisma/client").$Enums.ExpenseCategory;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     enable(id: string): import(".prisma/client").Prisma.Prisma__ExpenseClient<{
-        description: string | null;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
+        description: string | null;
         referenceNumber: string | null;
+        category: import(".prisma/client").$Enums.ExpenseCategory;
         amount: number;
         bankAccountId: string;
-        category: import(".prisma/client").$Enums.ExpenseCategory;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__ExpenseClient<{
-        description: string | null;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
+        description: string | null;
         referenceNumber: string | null;
+        category: import(".prisma/client").$Enums.ExpenseCategory;
         amount: number;
         bankAccountId: string;
-        category: import(".prisma/client").$Enums.ExpenseCategory;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

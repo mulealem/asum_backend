@@ -5,84 +5,84 @@ export declare class ShipmentItemController {
     private readonly productVariantService;
     constructor(productVariantService: ShipmentItemService);
     create(createShipmentItemDto: CreateShipmentItemDto, req: any): Promise<{
-        enabledById: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         stockId: string | null;
-        quantity: number;
-        orderItemFulfillmentId: string | null;
         shipmentId: string;
+        orderItemFulfillmentId: string | null;
     }>;
     createMany(createShipmentItemDto: CreateShipmentItemDto[], req: any): Promise<import(".prisma/client").Prisma.BatchPayload>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
         stock: {
             location: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
             productVariant: {
                 product: {
-                    title: string;
-                    abbreviation: string | null;
-                    description: string | null;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
                     typeOfProductId: string;
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
                 };
                 ProductVariantAttribute: {
                     value: string;
-                    enabledById: string | null;
+                    productVariantId: string;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
-                    productVariantId: string;
                     key: string;
                 }[];
                 ProductVariantPrice: {
-                    enabledById: string | null;
+                    productVariantId: string;
+                    currency: string;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
-                    productVariantId: string;
                     listPrice: number;
-                    currency: string;
                     tag: string | null;
                 }[];
             } & {
                 code: string;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -90,15 +90,15 @@ export declare class ShipmentItemController {
                 brandId: string;
             };
         } & {
-            enabledById: string | null;
+            productVariantId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             supplierId: string;
             locationId: string;
             batchId: string;
@@ -119,53 +119,53 @@ export declare class ShipmentItemController {
             stock: {
                 productVariant: {
                     product: {
-                        title: string;
-                        abbreviation: string | null;
-                        description: string | null;
-                        enabledById: string | null;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
                         typeOfProductId: string;
+                        title: string;
+                        abbreviation: string | null;
+                        description: string | null;
                     };
                     ProductVariantAttribute: {
                         value: string;
-                        enabledById: string | null;
+                        productVariantId: string;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
-                        productVariantId: string;
                         key: string;
                     }[];
                     ProductVariantPrice: {
-                        enabledById: string | null;
+                        productVariantId: string;
+                        currency: string;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
-                        productVariantId: string;
                         listPrice: number;
-                        currency: string;
                         tag: string | null;
                     }[];
                 } & {
                     code: string;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
@@ -173,15 +173,15 @@ export declare class ShipmentItemController {
                     brandId: string;
                 };
             } & {
-                enabledById: string | null;
+                productVariantId: string;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
-                productVariantId: string;
                 supplierId: string;
                 locationId: string;
                 batchId: string;
@@ -201,11 +201,11 @@ export declare class ShipmentItemController {
             orderItem: {
                 order: {
                     customer: {
-                        enabledById: string | null;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
@@ -215,20 +215,20 @@ export declare class ShipmentItemController {
                         address: string;
                     };
                 } & {
+                    customerId: string;
+                    remark: string | null;
                     status: import(".prisma/client").$Enums.OrderStatus;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
-                    customerId: string;
                     paymentOptionId: string;
                     paymentOptionRefernce: string | null;
                     expectedBankAccountId: string | null;
-                    remark: string | null;
                     isFullyPaid: boolean;
                     isPartiallyPaid: boolean;
                     isFullyApproved: boolean;
@@ -244,16 +244,17 @@ export declare class ShipmentItemController {
                     withholdingAmount: number | null;
                 };
             } & {
-                enabledById: string | null;
+                productVariantId: string;
+                currency: string;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
-                productVariantId: string;
-                currency: string;
+                approvedById: string | null;
                 isPartiallyFulfilled: boolean;
                 isFullyFulfilled: boolean;
                 isPartiallyShipped: boolean;
@@ -261,7 +262,6 @@ export declare class ShipmentItemController {
                 orderQuantity: number;
                 purchasedQuantity: number;
                 isApproved: boolean;
-                approvedById: string | null;
                 approvedAt: Date | null;
                 productVariantPriceId: string;
                 orderId: string;
@@ -270,26 +270,26 @@ export declare class ShipmentItemController {
                 shippedQuantity: number;
             };
         } & {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            stockId: string;
             fulfilledQuantity: number;
             shippedQuantity: number;
-            stockId: string;
             orderItemId: string;
         };
         shipment: {
             type: import(".prisma/client").$Enums.ShipmentType;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
@@ -299,7 +299,6 @@ export declare class ShipmentItemController {
             toLocationId: string | null;
             shipmentNumber: string;
             shipmentScheduledDate: Date;
-            expectedArrivalDate: Date | null;
             isShipmentStarted: boolean;
             shipmentStartDate: Date | null;
             shipmentStartedById: string | null;
@@ -307,6 +306,7 @@ export declare class ShipmentItemController {
             shipmentLoadedDate: Date | null;
             shipmentLoadedById: string | null;
             isShipmentArrived: boolean;
+            expectedArrivalDate: Date | null;
             actualArrivalDate: Date | null;
             arrivalConfirmedById: string | null;
             isShipmentCompleted: boolean;
@@ -314,95 +314,95 @@ export declare class ShipmentItemController {
             shipmentCompletedById: string | null;
         };
         ShipmentItemStatus: {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            statusId: string;
             shipmentItemId: string;
+            statusId: string;
         }[];
     } & {
-        enabledById: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         stockId: string | null;
-        quantity: number;
-        orderItemFulfillmentId: string | null;
         shipmentId: string;
+        orderItemFulfillmentId: string | null;
     })[]>;
     search(query: any): import(".prisma/client").Prisma.PrismaPromise<({
         stock: {
             location: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
             productVariant: {
                 product: {
-                    title: string;
-                    abbreviation: string | null;
-                    description: string | null;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
                     typeOfProductId: string;
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
                 };
                 ProductVariantAttribute: {
                     value: string;
-                    enabledById: string | null;
+                    productVariantId: string;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
-                    productVariantId: string;
                     key: string;
                 }[];
                 ProductVariantPrice: {
-                    enabledById: string | null;
+                    productVariantId: string;
+                    currency: string;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
-                    productVariantId: string;
                     listPrice: number;
-                    currency: string;
                     tag: string | null;
                 }[];
             } & {
                 code: string;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -410,15 +410,15 @@ export declare class ShipmentItemController {
                 brandId: string;
             };
         } & {
-            enabledById: string | null;
+            productVariantId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             supplierId: string;
             locationId: string;
             batchId: string;
@@ -439,53 +439,53 @@ export declare class ShipmentItemController {
             stock: {
                 productVariant: {
                     product: {
-                        title: string;
-                        abbreviation: string | null;
-                        description: string | null;
-                        enabledById: string | null;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
                         typeOfProductId: string;
+                        title: string;
+                        abbreviation: string | null;
+                        description: string | null;
                     };
                     ProductVariantAttribute: {
                         value: string;
-                        enabledById: string | null;
+                        productVariantId: string;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
-                        productVariantId: string;
                         key: string;
                     }[];
                     ProductVariantPrice: {
-                        enabledById: string | null;
+                        productVariantId: string;
+                        currency: string;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
-                        productVariantId: string;
                         listPrice: number;
-                        currency: string;
                         tag: string | null;
                     }[];
                 } & {
                     code: string;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
@@ -493,15 +493,15 @@ export declare class ShipmentItemController {
                     brandId: string;
                 };
             } & {
-                enabledById: string | null;
+                productVariantId: string;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
-                productVariantId: string;
                 supplierId: string;
                 locationId: string;
                 batchId: string;
@@ -521,11 +521,11 @@ export declare class ShipmentItemController {
             orderItem: {
                 order: {
                     customer: {
-                        enabledById: string | null;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
@@ -535,20 +535,20 @@ export declare class ShipmentItemController {
                         address: string;
                     };
                 } & {
+                    customerId: string;
+                    remark: string | null;
                     status: import(".prisma/client").$Enums.OrderStatus;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
-                    customerId: string;
                     paymentOptionId: string;
                     paymentOptionRefernce: string | null;
                     expectedBankAccountId: string | null;
-                    remark: string | null;
                     isFullyPaid: boolean;
                     isPartiallyPaid: boolean;
                     isFullyApproved: boolean;
@@ -564,16 +564,17 @@ export declare class ShipmentItemController {
                     withholdingAmount: number | null;
                 };
             } & {
-                enabledById: string | null;
+                productVariantId: string;
+                currency: string;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
-                productVariantId: string;
-                currency: string;
+                approvedById: string | null;
                 isPartiallyFulfilled: boolean;
                 isFullyFulfilled: boolean;
                 isPartiallyShipped: boolean;
@@ -581,7 +582,6 @@ export declare class ShipmentItemController {
                 orderQuantity: number;
                 purchasedQuantity: number;
                 isApproved: boolean;
-                approvedById: string | null;
                 approvedAt: Date | null;
                 productVariantPriceId: string;
                 orderId: string;
@@ -590,26 +590,26 @@ export declare class ShipmentItemController {
                 shippedQuantity: number;
             };
         } & {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            stockId: string;
             fulfilledQuantity: number;
             shippedQuantity: number;
-            stockId: string;
             orderItemId: string;
         };
         shipment: {
             type: import(".prisma/client").$Enums.ShipmentType;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
@@ -619,7 +619,6 @@ export declare class ShipmentItemController {
             toLocationId: string | null;
             shipmentNumber: string;
             shipmentScheduledDate: Date;
-            expectedArrivalDate: Date | null;
             isShipmentStarted: boolean;
             shipmentStartDate: Date | null;
             shipmentStartedById: string | null;
@@ -627,6 +626,7 @@ export declare class ShipmentItemController {
             shipmentLoadedDate: Date | null;
             shipmentLoadedById: string | null;
             isShipmentArrived: boolean;
+            expectedArrivalDate: Date | null;
             actualArrivalDate: Date | null;
             arrivalConfirmedById: string | null;
             isShipmentCompleted: boolean;
@@ -634,95 +634,95 @@ export declare class ShipmentItemController {
             shipmentCompletedById: string | null;
         };
         ShipmentItemStatus: {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            statusId: string;
             shipmentItemId: string;
+            statusId: string;
         }[];
     } & {
-        enabledById: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         stockId: string | null;
-        quantity: number;
-        orderItemFulfillmentId: string | null;
         shipmentId: string;
+        orderItemFulfillmentId: string | null;
     })[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__ShipmentItemClient<{
         stock: {
             location: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
             productVariant: {
                 product: {
-                    title: string;
-                    abbreviation: string | null;
-                    description: string | null;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
                     typeOfProductId: string;
+                    title: string;
+                    abbreviation: string | null;
+                    description: string | null;
                 };
                 ProductVariantAttribute: {
                     value: string;
-                    enabledById: string | null;
+                    productVariantId: string;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
-                    productVariantId: string;
                     key: string;
                 }[];
                 ProductVariantPrice: {
-                    enabledById: string | null;
+                    productVariantId: string;
+                    currency: string;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
-                    productVariantId: string;
                     listPrice: number;
-                    currency: string;
                     tag: string | null;
                 }[];
             } & {
                 code: string;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
@@ -730,15 +730,15 @@ export declare class ShipmentItemController {
                 brandId: string;
             };
         } & {
-            enabledById: string | null;
+            productVariantId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             supplierId: string;
             locationId: string;
             batchId: string;
@@ -759,53 +759,53 @@ export declare class ShipmentItemController {
             stock: {
                 productVariant: {
                     product: {
-                        title: string;
-                        abbreviation: string | null;
-                        description: string | null;
-                        enabledById: string | null;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
                         typeOfProductId: string;
+                        title: string;
+                        abbreviation: string | null;
+                        description: string | null;
                     };
                     ProductVariantAttribute: {
                         value: string;
-                        enabledById: string | null;
+                        productVariantId: string;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
-                        productVariantId: string;
                         key: string;
                     }[];
                     ProductVariantPrice: {
-                        enabledById: string | null;
+                        productVariantId: string;
+                        currency: string;
                         id: string;
                         createdAt: Date;
                         isEnabled: boolean;
                         enableRemark: string | null;
+                        enabledById: string | null;
                         disableRemark: string | null;
                         disabledById: string | null;
                         disabledDate: Date | null;
-                        productVariantId: string;
                         listPrice: number;
-                        currency: string;
                         tag: string | null;
                     }[];
                 } & {
                     code: string;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
@@ -813,15 +813,15 @@ export declare class ShipmentItemController {
                     brandId: string;
                 };
             } & {
-                enabledById: string | null;
+                productVariantId: string;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
-                productVariantId: string;
                 supplierId: string;
                 locationId: string;
                 batchId: string;
@@ -840,20 +840,20 @@ export declare class ShipmentItemController {
             };
             orderItem: {
                 order: {
+                    customerId: string;
+                    remark: string | null;
                     status: import(".prisma/client").$Enums.OrderStatus;
-                    enabledById: string | null;
                     id: string;
                     createdAt: Date;
                     isEnabled: boolean;
                     enableRemark: string | null;
+                    enabledById: string | null;
                     disableRemark: string | null;
                     disabledById: string | null;
                     disabledDate: Date | null;
-                    customerId: string;
                     paymentOptionId: string;
                     paymentOptionRefernce: string | null;
                     expectedBankAccountId: string | null;
-                    remark: string | null;
                     isFullyPaid: boolean;
                     isPartiallyPaid: boolean;
                     isFullyApproved: boolean;
@@ -869,16 +869,17 @@ export declare class ShipmentItemController {
                     withholdingAmount: number | null;
                 };
             } & {
-                enabledById: string | null;
+                productVariantId: string;
+                currency: string;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
-                productVariantId: string;
-                currency: string;
+                approvedById: string | null;
                 isPartiallyFulfilled: boolean;
                 isFullyFulfilled: boolean;
                 isPartiallyShipped: boolean;
@@ -886,7 +887,6 @@ export declare class ShipmentItemController {
                 orderQuantity: number;
                 purchasedQuantity: number;
                 isApproved: boolean;
-                approvedById: string | null;
                 approvedAt: Date | null;
                 productVariantPriceId: string;
                 orderId: string;
@@ -895,26 +895,26 @@ export declare class ShipmentItemController {
                 shippedQuantity: number;
             };
         } & {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            stockId: string;
             fulfilledQuantity: number;
             shippedQuantity: number;
-            stockId: string;
             orderItemId: string;
         };
         shipment: {
             type: import(".prisma/client").$Enums.ShipmentType;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
@@ -924,7 +924,6 @@ export declare class ShipmentItemController {
             toLocationId: string | null;
             shipmentNumber: string;
             shipmentScheduledDate: Date;
-            expectedArrivalDate: Date | null;
             isShipmentStarted: boolean;
             shipmentStartDate: Date | null;
             shipmentStartedById: string | null;
@@ -932,6 +931,7 @@ export declare class ShipmentItemController {
             shipmentLoadedDate: Date | null;
             shipmentLoadedById: string | null;
             isShipmentArrived: boolean;
+            expectedArrivalDate: Date | null;
             actualArrivalDate: Date | null;
             arrivalConfirmedById: string | null;
             isShipmentCompleted: boolean;
@@ -939,85 +939,85 @@ export declare class ShipmentItemController {
             shipmentCompletedById: string | null;
         };
         ShipmentItemStatus: {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            statusId: string;
             shipmentItemId: string;
+            statusId: string;
         }[];
     } & {
-        enabledById: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         stockId: string | null;
-        quantity: number;
-        orderItemFulfillmentId: string | null;
         shipmentId: string;
+        orderItemFulfillmentId: string | null;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     update(id: string, updateShipmentItemDto: UpdateShipmentItemDto): import(".prisma/client").Prisma.Prisma__ShipmentItemClient<{
-        enabledById: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         stockId: string | null;
-        quantity: number;
-        orderItemFulfillmentId: string | null;
         shipmentId: string;
+        orderItemFulfillmentId: string | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__ShipmentItemClient<{
-        enabledById: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         stockId: string | null;
-        quantity: number;
-        orderItemFulfillmentId: string | null;
         shipmentId: string;
+        orderItemFulfillmentId: string | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     enable(id: string): import(".prisma/client").Prisma.Prisma__ShipmentItemClient<{
-        enabledById: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         stockId: string | null;
-        quantity: number;
-        orderItemFulfillmentId: string | null;
         shipmentId: string;
+        orderItemFulfillmentId: string | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__ShipmentItemClient<{
-        enabledById: string | null;
+        quantity: number;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         stockId: string | null;
-        quantity: number;
-        orderItemFulfillmentId: string | null;
         shipmentId: string;
+        orderItemFulfillmentId: string | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

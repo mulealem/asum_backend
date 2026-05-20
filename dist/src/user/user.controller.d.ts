@@ -5,207 +5,207 @@ export declare class UserController {
     private readonly userService;
     constructor(userService: UserService);
     create(createUserDto: CreateUserDto): Promise<Omit<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         name: string;
-        email: string;
         phoneNumber: string | null;
+        email: string;
         password: string;
     }, "password">>;
     findAll(): Promise<Omit<{
         userRoles: ({
             role: {
-                title: string;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
                 permissions: string;
             };
         } & {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            roleId: string;
             userId: string;
+            roleId: string;
         })[];
     } & {
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         name: string;
-        email: string;
         phoneNumber: string | null;
+        email: string;
         password: string;
     }, "password">[]>;
     search(query: any): Promise<Omit<{
         userRoles: ({
             role: {
-                title: string;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
                 permissions: string;
             };
         } & {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            roleId: string;
             userId: string;
+            roleId: string;
         })[];
     } & {
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         name: string;
-        email: string;
         phoneNumber: string | null;
+        email: string;
         password: string;
     }, "password">[]>;
     me(req: any): Promise<Omit<{
         userRoles: ({
             role: {
-                title: string;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
                 permissions: string;
             };
         } & {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            roleId: string;
             userId: string;
+            roleId: string;
         })[];
     } & {
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         name: string;
-        email: string;
         phoneNumber: string | null;
+        email: string;
         password: string;
     }, "password">>;
     update(id: string, updateUserDto: UpdateUserDto): Promise<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         name: string;
-        email: string;
         phoneNumber: string | null;
+        email: string;
         password: string;
     }>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__UserClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         name: string;
-        email: string;
         phoneNumber: string | null;
+        email: string;
         password: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     updatePassword(data: any): Promise<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         name: string;
-        email: string;
         phoneNumber: string | null;
+        email: string;
         password: string;
     }>;
     enable(id: string): import(".prisma/client").Prisma.Prisma__UserClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         name: string;
-        email: string;
         phoneNumber: string | null;
+        email: string;
         password: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__UserClient<{
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
         name: string;
-        email: string;
         phoneNumber: string | null;
+        email: string;
         password: string;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

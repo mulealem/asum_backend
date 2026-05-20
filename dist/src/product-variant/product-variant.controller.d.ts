@@ -6,11 +6,11 @@ export declare class ProductVariantController {
     constructor(productVariantService: ProductVariantService);
     create(createProductVariantDto: CreateProductVariantDto, req: any): import(".prisma/client").Prisma.Prisma__ProductVariantClient<{
         code: string;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -19,39 +19,39 @@ export declare class ProductVariantController {
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
         brand: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-        };
-        product: {
             title: string;
             abbreviation: string | null;
             description: string | null;
-            enabledById: string | null;
+        };
+        product: {
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             typeOfProductId: string;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
     } & {
         code: string;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -60,66 +60,66 @@ export declare class ProductVariantController {
     })[]>;
     search(query: any): import(".prisma/client").Prisma.PrismaPromise<({
         brand: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-        };
-        product: {
             title: string;
             abbreviation: string | null;
             description: string | null;
-            enabledById: string | null;
+        };
+        product: {
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             typeOfProductId: string;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         ProductVariantAttribute: {
             value: string;
-            enabledById: string | null;
+            productVariantId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             key: string;
         }[];
         ProductVariantPrice: {
-            enabledById: string | null;
+            productVariantId: string;
+            currency: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             listPrice: number;
-            currency: string;
             tag: string | null;
         }[];
     } & {
         code: string;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -128,66 +128,66 @@ export declare class ProductVariantController {
     })[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__ProductVariantClient<{
         brand: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-        };
-        product: {
             title: string;
             abbreviation: string | null;
             description: string | null;
-            enabledById: string | null;
+        };
+        product: {
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             typeOfProductId: string;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         ProductVariantAttribute: {
             value: string;
-            enabledById: string | null;
+            productVariantId: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             key: string;
         }[];
         ProductVariantPrice: {
-            enabledById: string | null;
+            productVariantId: string;
+            currency: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             listPrice: number;
-            currency: string;
             tag: string | null;
         }[];
     } & {
         code: string;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -196,11 +196,11 @@ export declare class ProductVariantController {
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     update(id: string, updateProductVariantDto: UpdateProductVariantDto): import(".prisma/client").Prisma.Prisma__ProductVariantClient<{
         code: string;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -209,11 +209,11 @@ export declare class ProductVariantController {
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__ProductVariantClient<{
         code: string;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -222,11 +222,11 @@ export declare class ProductVariantController {
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     enable(id: string): import(".prisma/client").Prisma.Prisma__ProductVariantClient<{
         code: string;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -235,11 +235,11 @@ export declare class ProductVariantController {
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__ProductVariantClient<{
         code: string;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;

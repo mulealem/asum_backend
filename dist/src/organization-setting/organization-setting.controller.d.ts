@@ -6,8 +6,8 @@ export declare class OrganizationSettingController {
     get(): Promise<{
         id: string;
         name: string;
-        email: string | null;
         address: string | null;
+        email: string | null;
         phone1: string | null;
         phone2: string | null;
         logoUrl: string | null;
@@ -19,8 +19,8 @@ export declare class OrganizationSettingController {
     update(dto: UpdateOrganizationSettingDto, req: any): Promise<{
         id: string;
         name: string;
-        email: string | null;
         address: string | null;
+        email: string | null;
         phone1: string | null;
         phone2: string | null;
         logoUrl: string | null;

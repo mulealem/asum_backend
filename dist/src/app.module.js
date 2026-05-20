@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
+const core_1 = require("@nestjs/core");
 const bank_module_1 = require("./bank/bank.module");
 const user_module_1 = require("./user/user.module");
 const user_role_module_1 = require("./user-role/user-role.module");
@@ -48,6 +49,8 @@ const report_module_1 = require("./report/report.module");
 const purchase_request_module_1 = require("./purchase-request/purchase-request.module");
 const purchase_request_item_module_1 = require("./purchase-request-item/purchase-request-item.module");
 const expense_module_1 = require("./expense/expense.module");
+const permissions_guard_1 = require("./auth/permissions.guard");
+const jwt_auth_guard_1 = require("./auth/jwt-auth.guard");
 const organization_setting_module_1 = require("./organization-setting/organization-setting.module");
 const tax_module_1 = require("./tax/tax.module");
 const stock_adjust_reason_module_1 = require("./stock-adjust-reason/stock-adjust-reason.module");
@@ -106,7 +109,10 @@ exports.AppModule = AppModule = __decorate([
             proforma_module_1.ProformaModule,
         ],
         controllers: [],
-        providers: [],
+        providers: [
+            { provide: core_1.APP_GUARD, useClass: jwt_auth_guard_1.JwtAuthGuard },
+            { provide: core_1.APP_GUARD, useClass: permissions_guard_1.PermissionsGuard },
+        ],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

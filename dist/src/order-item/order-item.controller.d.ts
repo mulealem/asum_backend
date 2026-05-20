@@ -5,16 +5,17 @@ export declare class OrderItemController {
     private readonly orderItemService;
     constructor(orderItemService: OrderItemService);
     create(createOrderItemDto: CreateOrderItemDto, req: any): import(".prisma/client").Prisma.Prisma__OrderItemClient<{
-        enabledById: string | null;
+        productVariantId: string;
+        currency: string;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        productVariantId: string;
-        currency: string;
+        approvedById: string | null;
         isPartiallyFulfilled: boolean;
         isFullyFulfilled: boolean;
         isPartiallyShipped: boolean;
@@ -22,7 +23,6 @@ export declare class OrderItemController {
         orderQuantity: number;
         purchasedQuantity: number;
         isApproved: boolean;
-        approvedById: string | null;
         approvedAt: Date | null;
         productVariantPriceId: string;
         orderId: string;
@@ -33,11 +33,11 @@ export declare class OrderItemController {
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
         productVariant: {
             code: string;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
@@ -45,30 +45,31 @@ export declare class OrderItemController {
             brandId: string;
         };
         productVariantPrice: {
-            enabledById: string | null;
+            productVariantId: string;
+            currency: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             listPrice: number;
-            currency: string;
             tag: string | null;
         };
     } & {
-        enabledById: string | null;
+        productVariantId: string;
+        currency: string;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        productVariantId: string;
-        currency: string;
+        approvedById: string | null;
         isPartiallyFulfilled: boolean;
         isFullyFulfilled: boolean;
         isPartiallyShipped: boolean;
@@ -76,7 +77,6 @@ export declare class OrderItemController {
         orderQuantity: number;
         purchasedQuantity: number;
         isApproved: boolean;
-        approvedById: string | null;
         approvedAt: Date | null;
         productVariantPriceId: string;
         orderId: string;
@@ -87,39 +87,39 @@ export declare class OrderItemController {
     search(query: any): import(".prisma/client").Prisma.PrismaPromise<({
         productVariant: {
             product: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
                 typeOfProductId: string;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
             ProductVariantAttribute: {
                 value: string;
-                enabledById: string | null;
+                productVariantId: string;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
-                productVariantId: string;
                 key: string;
             }[];
         } & {
             code: string;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
@@ -127,30 +127,31 @@ export declare class OrderItemController {
             brandId: string;
         };
         productVariantPrice: {
-            enabledById: string | null;
+            productVariantId: string;
+            currency: string;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            productVariantId: string;
             listPrice: number;
-            currency: string;
             tag: string | null;
         };
     } & {
-        enabledById: string | null;
+        productVariantId: string;
+        currency: string;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        productVariantId: string;
-        currency: string;
+        approvedById: string | null;
         isPartiallyFulfilled: boolean;
         isFullyFulfilled: boolean;
         isPartiallyShipped: boolean;
@@ -158,7 +159,6 @@ export declare class OrderItemController {
         orderQuantity: number;
         purchasedQuantity: number;
         isApproved: boolean;
-        approvedById: string | null;
         approvedAt: Date | null;
         productVariantPriceId: string;
         orderId: string;
@@ -167,16 +167,17 @@ export declare class OrderItemController {
         shippedQuantity: number;
     })[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__OrderItemClient<{
-        enabledById: string | null;
+        productVariantId: string;
+        currency: string;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        productVariantId: string;
-        currency: string;
+        approvedById: string | null;
         isPartiallyFulfilled: boolean;
         isFullyFulfilled: boolean;
         isPartiallyShipped: boolean;
@@ -184,7 +185,6 @@ export declare class OrderItemController {
         orderQuantity: number;
         purchasedQuantity: number;
         isApproved: boolean;
-        approvedById: string | null;
         approvedAt: Date | null;
         productVariantPriceId: string;
         orderId: string;
@@ -193,16 +193,17 @@ export declare class OrderItemController {
         shippedQuantity: number;
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     update(id: string, updateOrderItemDto: UpdateOrderItemDto): import(".prisma/client").Prisma.Prisma__OrderItemClient<{
-        enabledById: string | null;
+        productVariantId: string;
+        currency: string;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        productVariantId: string;
-        currency: string;
+        approvedById: string | null;
         isPartiallyFulfilled: boolean;
         isFullyFulfilled: boolean;
         isPartiallyShipped: boolean;
@@ -210,7 +211,6 @@ export declare class OrderItemController {
         orderQuantity: number;
         purchasedQuantity: number;
         isApproved: boolean;
-        approvedById: string | null;
         approvedAt: Date | null;
         productVariantPriceId: string;
         orderId: string;
@@ -219,20 +219,20 @@ export declare class OrderItemController {
         shippedQuantity: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     fulfill(fulfillData: any, req: any): Promise<{
+        customerId: string;
+        remark: string | null;
         status: import(".prisma/client").$Enums.OrderStatus;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        customerId: string;
         paymentOptionId: string;
         paymentOptionRefernce: string | null;
         expectedBankAccountId: string | null;
-        remark: string | null;
         isFullyPaid: boolean;
         isPartiallyPaid: boolean;
         isFullyApproved: boolean;
@@ -248,16 +248,17 @@ export declare class OrderItemController {
         withholdingAmount: number | null;
     }>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__OrderItemClient<{
-        enabledById: string | null;
+        productVariantId: string;
+        currency: string;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        productVariantId: string;
-        currency: string;
+        approvedById: string | null;
         isPartiallyFulfilled: boolean;
         isFullyFulfilled: boolean;
         isPartiallyShipped: boolean;
@@ -265,7 +266,6 @@ export declare class OrderItemController {
         orderQuantity: number;
         purchasedQuantity: number;
         isApproved: boolean;
-        approvedById: string | null;
         approvedAt: Date | null;
         productVariantPriceId: string;
         orderId: string;
@@ -274,16 +274,17 @@ export declare class OrderItemController {
         shippedQuantity: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     enable(id: string): import(".prisma/client").Prisma.Prisma__OrderItemClient<{
-        enabledById: string | null;
+        productVariantId: string;
+        currency: string;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        productVariantId: string;
-        currency: string;
+        approvedById: string | null;
         isPartiallyFulfilled: boolean;
         isFullyFulfilled: boolean;
         isPartiallyShipped: boolean;
@@ -291,7 +292,6 @@ export declare class OrderItemController {
         orderQuantity: number;
         purchasedQuantity: number;
         isApproved: boolean;
-        approvedById: string | null;
         approvedAt: Date | null;
         productVariantPriceId: string;
         orderId: string;
@@ -300,16 +300,17 @@ export declare class OrderItemController {
         shippedQuantity: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__OrderItemClient<{
-        enabledById: string | null;
+        productVariantId: string;
+        currency: string;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
-        productVariantId: string;
-        currency: string;
+        approvedById: string | null;
         isPartiallyFulfilled: boolean;
         isFullyFulfilled: boolean;
         isPartiallyShipped: boolean;
@@ -317,7 +318,6 @@ export declare class OrderItemController {
         orderQuantity: number;
         purchasedQuantity: number;
         isApproved: boolean;
-        approvedById: string | null;
         approvedAt: Date | null;
         productVariantPriceId: string;
         orderId: string;

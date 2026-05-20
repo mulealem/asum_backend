@@ -6,11 +6,11 @@ export declare class ShipmentController {
     constructor(shipmentService: ShipmentService);
     create(createShipmentDto: CreateShipmentDto, req: any): import(".prisma/client").Prisma.Prisma__ShipmentClient<{
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -20,7 +20,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -28,6 +27,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -36,78 +36,78 @@ export declare class ShipmentController {
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     createWithItems(body: any, req: any): Promise<{
         carrier: {
-            title: string;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            description: string | null;
             identifier: string | null;
             carrierTypeId: string;
         };
         ShipmentStatus: {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            shipmentId: string;
             statusId: string;
+            shipmentId: string;
         }[];
         fromLocation: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         toLocation: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         shipmentItems: {
-            enabledById: string | null;
+            quantity: number;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             stockId: string | null;
-            quantity: number;
-            orderItemFulfillmentId: string | null;
             shipmentId: string;
+            orderItemFulfillmentId: string | null;
         }[];
     } & {
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -117,7 +117,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -125,6 +124,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -133,78 +133,78 @@ export declare class ShipmentController {
     }>;
     createTransferWithItems(body: any, req: any): Promise<{
         carrier: {
-            title: string;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            description: string | null;
             identifier: string | null;
             carrierTypeId: string;
         };
         ShipmentStatus: {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            shipmentId: string;
             statusId: string;
+            shipmentId: string;
         }[];
         fromLocation: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         toLocation: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         shipmentItems: {
-            enabledById: string | null;
+            quantity: number;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             stockId: string | null;
-            quantity: number;
-            orderItemFulfillmentId: string | null;
             shipmentId: string;
+            orderItemFulfillmentId: string | null;
         }[];
     } & {
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -214,7 +214,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -222,6 +221,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -235,78 +235,78 @@ export declare class ShipmentController {
     }[]>;
     findAll(): import(".prisma/client").Prisma.PrismaPromise<({
         carrier: {
-            title: string;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            description: string | null;
             identifier: string | null;
             carrierTypeId: string;
         };
         ShipmentStatus: {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            shipmentId: string;
             statusId: string;
+            shipmentId: string;
         }[];
         fromLocation: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         toLocation: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         shipmentItems: {
-            enabledById: string | null;
+            quantity: number;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             stockId: string | null;
-            quantity: number;
-            orderItemFulfillmentId: string | null;
             shipmentId: string;
+            orderItemFulfillmentId: string | null;
         }[];
     } & {
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -316,7 +316,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -324,6 +323,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -332,78 +332,78 @@ export declare class ShipmentController {
     })[]>;
     search(query: any): import(".prisma/client").Prisma.PrismaPromise<({
         carrier: {
-            title: string;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            description: string | null;
             identifier: string | null;
             carrierTypeId: string;
         };
         ShipmentStatus: {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            shipmentId: string;
             statusId: string;
+            shipmentId: string;
         }[];
         fromLocation: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         toLocation: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         shipmentItems: {
-            enabledById: string | null;
+            quantity: number;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             stockId: string | null;
-            quantity: number;
-            orderItemFulfillmentId: string | null;
             shipmentId: string;
+            orderItemFulfillmentId: string | null;
         }[];
     } & {
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -413,7 +413,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -421,6 +420,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -430,29 +430,29 @@ export declare class ShipmentController {
     findOne(id: string): import(".prisma/client").Prisma.Prisma__ShipmentClient<{
         carrier: {
             carrierType: {
-                title: string;
-                abbreviation: string | null;
-                description: string | null;
-                enabledById: string | null;
                 id: string;
                 createdAt: Date;
                 isEnabled: boolean;
                 enableRemark: string | null;
+                enabledById: string | null;
                 disableRemark: string | null;
                 disabledById: string | null;
                 disabledDate: Date | null;
+                title: string;
+                abbreviation: string | null;
+                description: string | null;
             };
         } & {
-            title: string;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            description: string | null;
             identifier: string | null;
             carrierTypeId: string;
         };
@@ -461,42 +461,42 @@ export declare class ShipmentController {
             name: string;
         };
         ShipmentStatus: {
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
-            shipmentId: string;
             statusId: string;
+            shipmentId: string;
         }[];
         fromLocation: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         toLocation: {
-            title: string;
-            abbreviation: string | null;
-            description: string | null;
-            enabledById: string | null;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
+            title: string;
+            abbreviation: string | null;
+            description: string | null;
         };
         shipmentStartedBy: {
             id: string;
@@ -515,26 +515,26 @@ export declare class ShipmentController {
             name: string;
         };
         shipmentItems: {
-            enabledById: string | null;
+            quantity: number;
             id: string;
             createdAt: Date;
             isEnabled: boolean;
             enableRemark: string | null;
+            enabledById: string | null;
             disableRemark: string | null;
             disabledById: string | null;
             disabledDate: Date | null;
             stockId: string | null;
-            quantity: number;
-            orderItemFulfillmentId: string | null;
             shipmentId: string;
+            orderItemFulfillmentId: string | null;
         }[];
     } & {
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -544,7 +544,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -552,6 +551,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -560,11 +560,11 @@ export declare class ShipmentController {
     }, null, import("@prisma/client/runtime/library").DefaultArgs>;
     update(id: string, updateShipmentDto: UpdateShipmentDto): import(".prisma/client").Prisma.Prisma__ShipmentClient<{
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -574,7 +574,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -582,6 +581,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -590,11 +590,11 @@ export declare class ShipmentController {
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     remove(id: string): import(".prisma/client").Prisma.Prisma__ShipmentClient<{
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -604,7 +604,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -612,6 +611,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -620,11 +620,11 @@ export declare class ShipmentController {
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     enable(id: string): import(".prisma/client").Prisma.Prisma__ShipmentClient<{
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -634,7 +634,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -642,6 +641,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -650,11 +650,11 @@ export declare class ShipmentController {
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
     load(id: string, req: any): Promise<{
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -664,7 +664,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -672,6 +671,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -680,11 +680,11 @@ export declare class ShipmentController {
     }>;
     start(id: string, req: any): Promise<{
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -694,7 +694,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -702,6 +701,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -710,11 +710,11 @@ export declare class ShipmentController {
     }>;
     arrive(id: string, req: any): Promise<{
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -724,7 +724,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -732,6 +731,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -740,11 +740,11 @@ export declare class ShipmentController {
     }>;
     complete(id: string, req: any): Promise<{
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -754,7 +754,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -762,6 +761,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;
@@ -770,11 +770,11 @@ export declare class ShipmentController {
     }>;
     disable(id: string, req: any): import(".prisma/client").Prisma.Prisma__ShipmentClient<{
         type: import(".prisma/client").$Enums.ShipmentType;
-        enabledById: string | null;
         id: string;
         createdAt: Date;
         isEnabled: boolean;
         enableRemark: string | null;
+        enabledById: string | null;
         disableRemark: string | null;
         disabledById: string | null;
         disabledDate: Date | null;
@@ -784,7 +784,6 @@ export declare class ShipmentController {
         toLocationId: string | null;
         shipmentNumber: string;
         shipmentScheduledDate: Date;
-        expectedArrivalDate: Date | null;
         isShipmentStarted: boolean;
         shipmentStartDate: Date | null;
         shipmentStartedById: string | null;
@@ -792,6 +791,7 @@ export declare class ShipmentController {
         shipmentLoadedDate: Date | null;
         shipmentLoadedById: string | null;
         isShipmentArrived: boolean;
+        expectedArrivalDate: Date | null;
         actualArrivalDate: Date | null;
         arrivalConfirmedById: string | null;
         isShipmentCompleted: boolean;

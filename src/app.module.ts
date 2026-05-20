@@ -43,6 +43,7 @@ import { PurchaseRequestModule } from './purchase-request/purchase-request.modul
 import { PurchaseRequestItemModule } from './purchase-request-item/purchase-request-item.module';
 import { ExpenseModule } from './expense/expense.module';
 import { PermissionsGuard } from './auth/permissions.guard';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { OrganizationSettingModule } from './organization-setting/organization-setting.module';
 import { TaxModule } from './tax/tax.module';
 import { StockAdjustReasonModule } from './stock-adjust-reason/stock-adjust-reason.module';
@@ -98,6 +99,9 @@ import { ProformaModule } from './proforma/proforma.module';
     ProformaModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    { provide: APP_GUARD, useClass: JwtAuthGuard },
+    { provide: APP_GUARD, useClass: PermissionsGuard },
+  ],
 })
 export class AppModule {}
